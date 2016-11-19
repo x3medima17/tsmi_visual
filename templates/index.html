@@ -1,52 +1,71 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <!--Script Reference[1]-->
-  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-</head>
-<body>
-  <!--Chart Placement[2]-->
-  <div id="chartDiv"></div>
-  <script>
-    var http = new XMLHttpRequest();
-    var url = "/run?id=583072629089433dedc23ca6";
-    var params = "";
-    http.open("GET", url, true);
+{% extends 'base.html' %}
 
-    //Send the proper header information along with the request
-    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    http.onreadystatechange = function() {//Call a function when the state changes.
-        if(http.readyState == 4 && http.status == 200) {
+{% block content %}
+	
+	<div class="row-fluid">
+		<div class="span12">
+			<table id="sample-table-1" class="table table-striped table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th class="hidden-phone">Time</th>
+						<th>Max iters</th>
+						<th class="hidden-480">Total samples</th>
 
-            draw(JSON.parse(http.responseText))
-        }
-    }
-    http.send(params);
+						<th class="hidden-phone">m</th>
+						<th class="hidden-phone">s0</th>
+						<th class="hidden-phone">accepted</th>
+						<th class="hidden-480">Minimum delta</th>
 
-    function draw(data)
-    {
+					</tr>
+				</thead>
 
-      var chartData = {
-        type: "line",  // Specify your chart type here.
-        title: {
-          text: "My First Chart" // Adds a title to your chart
-        },
-        legend: {}, // Creates an interactive legend
-        series: [  // Insert your series data here.
-            {
-            values: data
-            }
-        ]
-      };
-      zingchart.render({ // Render Method[3]
-        id: "chartDiv",
-        data: chartData,
-        height: 400,
-        width: 1300
-      });
-    }
-  </script>
-</body>
-</html>
+				<tbody>
+					{% for run in runs %}
+					<tr>
+						<td>
+							<a class="submission_info" href="/run?id={{ run['_id'] }}">{{ (run["_id"]) }}</a>
+						</td>
+						<td>{{ run["time"] }}</td>
+						<td class="hidden-phone">{{ run["max_iters"] }}</td>
+						<td class="hidden-480">{{ run["total_samples"] }}</td>
+						<td>{{ run["m"] }}</td>
+						<td>{{ run["s0"] }}</td>
+						<td>{{ run["accepted"] }}</td>
+						
+						<td class="hidden-480">{{ run["min_delta"] }}</td>
+						
+					
+					</tr>
+					{% end %}
+				
+				</tbody>
+			</table>
+		</div><!--/span-->
+	</div><!--/row-->
+	
+
+
+{% end %}
+
+
+
+{% block script %}
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+
+})
+</script>
+
+{% end %}
+
+{% block style %}
+<style>
+.action-buttons-div a{
+	margin-right:3px;
+}
+</style>
+{% end %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+  
+  <div class="row-fluid">
+    <div class="span12">
+      <div id='chartDeltas'></div>
+      
+    </div><!--/span-->
+  </div><!--/row-->
+  <div class="row-fluid">
+    <div class="span12">
+      <div id='chartHist'></div>
+      
+    </div><!--/span-->
+  </div><!--/row-->
+
+
+{% end %}
+
+
+
+{% block script %}
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+
+<script type="text/javascript">
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+$(document).ready(function(){
+  var id = getUrlParameter('id')
+  console.log(id)
+
+  $.post("/run",{id:id}, function(data){
+    console.log("data")  
+    data = JSON.parse(data)
+    deltas = data["deltas"]
+    hist = data["histogram"]
+    draw_delta(deltas)
+    draw_hist(hist)
+
+  })
+
+  function draw_delta(data)
+  {
+
+    var chartData = {
+      type: "line",  // Specify your chart type here.
+      title: {
+        text: "Delta" // Adds a title to your chart
+      },
+      legend: {}, // Creates an interactive legend
+      series: [  // Insert your series data here.
+          {
+          values: data,
+          text : "Delta"
+          }
+      ]
+    };
+    zingchart.render({ // Render Method[3]
+      id: "chartDeltas",
+      data: chartData,
+      height: 400,
+      width: $("#chartDeltas").parent().width() - 20
+    });
+  }
+
+  function draw_hist(data)
+  {
+
+     var chartData = {
+        "type": "bar",
+        "plot": {
+            "aspect": "histogram",
+        },
+        "title": {
+          text : "Delta histogram"
+        },
+        "plotarea": {
+            "adjust-layout": true,
+        },
+        "series": [
+            {"values": data["data"] },
+        ],
+        "scale-x": {
+            "progression": "lin",
+            "min-value": 0,
+            "max-value": data["max"],
+            "step": data["step"],
+            "decimals": 1,
+        },
+    };
+
+    zingchart.render({ // Render Method[3]
+      id: "chartHist",
+      data: chartData,
+      height: 400,
+      width: $("#chartHist").parent().width()
+    });
+  }  
+
+})
+</script>
+
+{% end %}
+
+{% block style %}
+<style>
+.action-buttons-div a{
+  margin-right:3px;
+}
+</style>
+{% end %}
+
+
+

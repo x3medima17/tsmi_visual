@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--Script Reference[1]-->
+  <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+</head>
+<body>
+  <!--Chart Placement[2]-->
+  <div id="chartDiv"></div>
+  <script>
+    var http = new XMLHttpRequest();
+    var url = "/run?id=583072629089433dedc23ca6";
+    var params = "";
+    http.open("GET", url, true);
+
+    //Send the proper header information along with the request
+    http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+
+            draw(JSON.parse(http.responseText))
+        }
+    }
+    http.send(params);
+
+    function draw(data)
+    {
+
+      var chartData = {
+        type: "line",  // Specify your chart type here.
+        title: {
+          text: "My First Chart" // Adds a title to your chart
+        },
+        legend: {}, // Creates an interactive legend
+        series: [  // Insert your series data here.
+            {
+            values: data
+            }
+        ]
+      };
+      zingchart.render({ // Render Method[3]
+        id: "chartDiv",
+        data: chartData,
+        height: 400,
+        width: 1300
+      });
+    }
+  </script>
+</body>
+</html>

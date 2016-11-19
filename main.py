@@ -3,6 +3,9 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.httpserver
+import tornado.options
+
+
 import pymongo
 import numpy as np
 from bson.objectid import ObjectId
@@ -11,6 +14,8 @@ import json
 client = pymongo.MongoClient()
 db = client.tsmi
 
+
+tornado.options.parse_command_line()
 
 class Application(tornado.web.Application):
     def __init__(self):

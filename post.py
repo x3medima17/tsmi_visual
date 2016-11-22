@@ -12,6 +12,6 @@ data = {
 }
 url = 'http://localhost:8080'
 
-r = requests.post(url, data=data, allow_redirects=True)
+r = requests.post(url, data=json_loads(data), allow_redirects=True)
 
 print r.content

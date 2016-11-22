@@ -39,17 +39,19 @@ class MainHandler(tornado.web.RequestHandler):
         self.render("index.html", runs=runs)
 
     def post(self):
-        raw = self.get_argument("data", None)
-        time = self.get_argument("time", None)
+        print(self.request.body)
+	req = json.loads(self.request.body)
+	raw = req["data"]
+        time = req["time"]
 
-        meta = raw.split("\r\n")[:5]
+        meta = raw.split("\n")[:5]
 
-        data = "".join(raw.split("\r\n")[8:])
+        data = "".join(raw.split("\n")[8:])
         M = np.fromstring(data, sep="\t").reshape(-1, 13)
 
         # Metropolis results
         out = dict(
-            zone=[map(float, x.replace("(", "").replace(")", "").split(';')) for x in meta[1].split(" ")],
+            zone=[map(float, x.replace("(", "").replace(")", "").split(';')) for x in meta[1].strip().split(" ")],
             m=float(meta[2].split(":")[1]),
             s0=float(meta[3].split(":")[1]),
             max_iters=int(meta[4].split(":")[1]),

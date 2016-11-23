@@ -48,7 +48,8 @@ class MainHandler(tornado.web.RequestHandler):
 
         data = "".join(raw.split("\n")[8:])
         M = np.fromstring(data, sep="\t").reshape(-1, 13)
-
+        deltas = M[:,12]
+        
         # Metropolis results
         out = dict(
             zone=[map(float, x.replace("(", "").replace(")", "").split(';')) for x in meta[1].strip().split(" ")],
@@ -62,6 +63,17 @@ class MainHandler(tornado.web.RequestHandler):
             raw=raw,
             time=time,
         )
+        dmax = max(deltas)
+        dmin = min(deltas)
+        alpha = out["accepted"]*1.0/ out["total_samples"]
+        stdev = np.std(deltas)
+        a = 1 - dmin
+        b = (1-alpha**2)
+        c = 1 - np.mean(deltas)
+        health = a + b + c
+        health /= 3
+
+        out["health"] = health
         db.runs.insert(out)
         self.write("hello")
 

@@ -9,10 +9,21 @@
       
     </div><!--/span-->
   </div><!--/row-->
+
   <div class="row-fluid">
     <div class="span12">
       <div id='chartHist'></div>
-      
+    </div><!--/span-->
+  </div><!--/row-->
+
+<div class="row-fluid">
+    <div class="span12">
+      <div id='path0'></div>
+    </div><!--/span-->
+  </div><!--/row-->
+<div class="row-fluid">
+    <div class="span12">
+      <div id='path1'></div>
     </div><!--/span-->
   </div><!--/row-->
 
@@ -49,9 +60,10 @@ $(document).ready(function(){
     data = JSON.parse(data)
     deltas = data["deltas"]
     hist = data["histogram"]
+    paths = data["paths"]
     draw_delta(deltas)
     draw_hist(hist)
-
+    draw_paths(paths)
   })
 
   function draw_delta(data)
@@ -78,6 +90,42 @@ $(document).ready(function(){
     });
   }
 
+  function draw_paths(data) {
+    chartData = function(k){
+      return {
+      "type": "scatter",
+      "title": {
+        text : "Path "+ (k+1).toString()
+      },
+      "series": [
+          {"values": data[k]["data"]},
+      ],
+      "scale-x": {
+        "min-value": data[k]["minx"],
+        "max-value": data[k]["maxx"],
+       },
+      "scale-y": {
+        "min-value": data[k]["miny"],
+        "max-value": data[k]["maxy"],
+       },
+      }
+    };
+    console.log(data[0])
+    zingchart.render({ // Render Method[3]
+      id: "path0",
+      data: chartData(0),
+      height: 400,
+      width: $("#path0").parent().width()
+    });
+
+    zingchart.render({ // Render Method[3]
+      id: "path1",
+      data: chartData(1),
+      height: 400,
+      width: $("#path1").parent().width()
+    });
+    // body...
+  }
   function draw_hist(data)
   {
 

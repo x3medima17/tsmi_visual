@@ -98,13 +98,37 @@ class RunHandler(tornado.web.RequestHandler):
         if len(tmp) > 1:
             step = tmp[1] - tmp[0]
 
+        x1 = A[:,8]
+        y1 = A[:,9]
+        
+        x2 = A[:,10]
+        y2 = A[:,11]
+
+        paths = [A[:,8:10].tolist(), A[:,10:12].tolist()]
         out = dict(
             deltas=deltas,
             histogram=dict(
                 data=hist[0].tolist(),
                 max=max(tmp),
                 step=step
-            )
+            ),
+            paths = [
+                    dict(
+                        data = np.array([x1,y1]).transpose().tolist(),#[x1.tolist(), x2.tolist()],
+                        maxx = max(x1),
+                        maxy = max(y1),
+                        minx = min(x1),
+                        miny = min(y1)
+                        ),
+                    dict(
+                        data = np.array([x2,y2]).transpose().tolist(),#[x1.tolist(), x2.tolist()],
+                        maxx = max(x2),
+                        maxy = max(y2),
+                        minx = min(x2),
+                        miny = min(y2)
+                        )
+                ],
+                
         )
         self.write(json.dumps(out))
 

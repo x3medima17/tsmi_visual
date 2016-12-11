@@ -44,8 +44,8 @@ class MainHandler(tornado.web.RequestHandler):
 
     def post(self):
         print(self.request.body)
-	req = json.loads(self.request.body)
-	raw = req["data"]
+    	req = json.loads(self.request.body)
+    	raw = req["data"]
         time = req["time"]
 
         meta = raw.split("\n")[:5]
@@ -150,7 +150,24 @@ class PathsHandler(tornado.web.RequestHandler):
 
 class RunHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("run.html")
+        id = self.get_argument("id", None)
+        if not id:
+            self.write("no id")
+            return
+        mid = ObjectId(id)
+        item = db.runs.find_one({"_id": mid})
+                
+
+        out = dict(
+                min_delta=item["min_delta"],
+                s0=item["s0"],
+                m=item["m"],
+                total_samples=item["total_samples"],
+                accepted=item["accepted"],
+                health=item["health"],
+                time=item["time"]
+            )
+        self.render("run.html",**out)
 
     def post(self):
         id = self.get_argument("id", None)
@@ -176,28 +193,7 @@ class RunHandler(tornado.web.RequestHandler):
 
         paths = [A[:,8:10].tolist(), A[:,10:12].tolist()]
         out = dict(
-            histogram=dict(
-                data=hist[0].tolist(),
-                max=max(tmp),
-                step=step
-            ),
-            paths = [
-                    dict(
-                        data = np.array([x1,y1]).transpose().tolist(),#[x1.tolist(), x2.tolist()],
-                        maxx = max(x1),
-                        maxy = max(y1),
-                        minx = min(x1),
-                        miny = min(y1)
-                        ),
-                    dict(
-                        data = np.array([x2,y2]).transpose().tolist(),#[x1.tolist(), x2.tolist()],
-                        maxx = max(x2),
-                        maxy = max(y2),
-                        minx = min(x2),
-                        miny = min(y2)
-                        )
-                ],
-                
+                      
         )
         self.write(json.dumps(out))
 

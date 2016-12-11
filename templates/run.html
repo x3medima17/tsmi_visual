@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 
+{% block style %}
 
+{% end %}
 {% block content %}
-
+<style type="text/css">
+  .custom {
+    margin-left: 20px;
+  }
+  .custom > div {
+    margin-right: 10px !important; 
+    margin-bottom: 5px;
+    width: 220px;
+  }
+  
+  
+</style>
   <div class="row-fluid">
-    <div class="col-sm-6">
+    <div class="col-sm-6 custom">
     
       <div class="infobox infobox-green infobox-big infobox-dark">
         <div class="infobox-icon">
@@ -13,7 +26,7 @@
 
         <div class="infobox-data">
           <div class="infobox-content">Min Delta</div>
-          <div class="infobox-content">1,205</div>
+          <div class="infobox-content">{{ min_delta }}</div>
         </div>
       </div>
 
@@ -24,7 +37,7 @@
 
         <div class="infobox-data">
           <div class="infobox-content">Iterations</div>
-          <div class="infobox-content">1,205</div>
+          <div class="infobox-content">{{ total_samples }}</div>
         </div>
       </div>
 
@@ -35,7 +48,7 @@
 
         <div class="infobox-data">
           <div class="infobox-content">Accepted</div>
-          <div class="infobox-content">1,205</div>
+          <div class="infobox-content">{{ accepted }}</div>
         </div>
       </div>
 
@@ -46,7 +59,7 @@
 
         <div class="infobox-data">
           <div class="infobox-content">S0</div>
-          <div class="infobox-content">1,205</div>
+          <div class="infobox-content">{{ s0 }}</div>
         </div>
       </div>
 
@@ -58,7 +71,7 @@
 
           <div class="infobox-data">
             <div class="infobox-content">m</div>
-            <div class="infobox-content">1,205</div>
+            <div class="infobox-content">{{ m }}</div>
           </div>
         </div>
 
@@ -73,6 +86,7 @@
           </div>
         </div>
 
+
         <div class="infobox infobox-blue3 infobox-big   infobox-dark">
           <div class="infobox-icon">
             <i class="ace-icon fa icon-home"></i>
@@ -80,19 +94,7 @@
 
           <div class="infobox-data">
             <div class="infobox-content">Health</div>
-            <div class="infobox-content">1,205</div>
-          </div>
-        </div>
-
-
-        <div class="infobox infobox-grey infobox-big   infobox-dark">
-          <div class="infobox-icon">
-            <i class="ace-icon fa icon-home"></i>
-          </div>
-
-          <div class="infobox-data">
-            <div class="infobox-content">Submission time</div>
-            <div class="infobox-content">1,205</div>
+            <div class="infobox-content">{{ health }}</div>
           </div>
         </div>
 
@@ -106,6 +108,29 @@
           <div class="infobox-data">
             <div class="infobox-content">Shoks</div>
             <div class="infobox-content">0</div>
+          </div>
+        </div>    
+
+
+        <div class="infobox infobox-grey infobox-big   infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">Submission time</div>
+            <div class="infobox-content">{{ time }}</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-red infobox-big   infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">Placeholder</div>
+            <div class="infobox-content">100</div>
           </div>
         </div>    
 

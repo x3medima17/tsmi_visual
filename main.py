@@ -21,7 +21,10 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             (r"/", MainHandler),
-            (r"/run", RunHandler)
+            (r"/run", RunHandler),
+            (r"/deltas", DeltasHandler),
+            (r"/histogram", HistogramHandler),
+            (r"/paths",PathsHandler)
         ]
 
         settings = dict(
@@ -79,6 +82,72 @@ class MainHandler(tornado.web.RequestHandler):
         self.write("hello")
 
 
+class DeltasHandler(tornado.web.RequestHandler):
+    def get(self):
+        id = self.get_argument("id", None)
+        mid = ObjectId(id)
+        item = db.runs.find_one({"_id": mid})
+        A = np.array(item["list_of_lists"])
+        deltas = A[:, 12].tolist()
+        self.write(json.dumps(deltas))
+
+class HistogramHandler(tornado.web.RequestHandler):
+    def get(self):
+        id = self.get_argument("id", None)
+        mid = ObjectId(id)
+        item = db.runs.find_one({"_id": mid})
+        A = np.array(item["list_of_lists"])
+        deltas = A[:, 12].tolist()
+        hist = np.histogram(A[:, 12],300)
+        tmp = hist[1].tolist()
+        step = 0
+        if len(tmp) > 1:
+            step = tmp[1] - tmp[0]
+
+        out = dict(
+            data=hist[0].tolist(),
+            max=max(tmp),
+            step=step
+        )
+
+        self.write(json.dumps(out))
+
+class PathsHandler(tornado.web.RequestHandler):
+    def get(self):
+        id = self.get_argument("id", None)
+        if not id:
+            self.write("no id")
+            return
+        mid = ObjectId(id)
+        item = db.runs.find_one({"_id": mid})
+        A = np.array(item["list_of_lists"])
+       
+       
+        x1 = A[:,8]
+        y1 = A[:,9]
+        
+        x2 = A[:,10]
+        y2 = A[:,11]
+
+        paths = [A[:,8:10].tolist(), A[:,10:12].tolist()]
+        out =  [
+                    dict(
+                        data = np.array([x1,y1]).transpose().tolist(),#[x1.tolist(), x2.tolist()],
+                        maxx = max(x1),
+                        maxy = max(y1),
+                        minx = min(x1),
+                        miny = min(y1)
+                        ),
+                    dict(
+                        data = np.array([x2,y2]).transpose().tolist(),#[x1.tolist(), x2.tolist()],
+                        maxx = max(x2),
+                        maxy = max(y2),
+                        minx = min(x2),
+                        miny = min(y2)
+                        )
+                ]
+        self.write(json.dumps(out))     
+
 class RunHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("run.html")
@@ -107,7 +176,6 @@ class RunHandler(tornado.web.RequestHandler):
 
         paths = [A[:,8:10].tolist(), A[:,10:12].tolist()]
         out = dict(
-            deltas=deltas,
             histogram=dict(
                 data=hist[0].tolist(),
                 max=max(tmp),

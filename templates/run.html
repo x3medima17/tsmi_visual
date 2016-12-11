@@ -2,7 +2,119 @@
 
 
 {% block content %}
-  
+
+  <div class="row-fluid">
+    <div class="col-sm-6">
+    
+      <div class="infobox infobox-green infobox-big infobox-dark">
+        <div class="infobox-icon">
+          <i class="ace-icon fa icon-home"></i>
+        </div>
+
+        <div class="infobox-data">
+          <div class="infobox-content">Min Delta</div>
+          <div class="infobox-content">1,205</div>
+        </div>
+      </div>
+
+      <div class="infobox infobox-red infobox-big infobox-dark">
+        <div class="infobox-icon">
+          <i class="ace-icon fa icon-home"></i>
+        </div>
+
+        <div class="infobox-data">
+          <div class="infobox-content">Iterations</div>
+          <div class="infobox-content">1,205</div>
+        </div>
+      </div>
+
+      <div class="infobox infobox-blue infobox-big infobox-dark">
+        <div class="infobox-icon">
+          <i class="ace-icon fa icon-home"></i>
+        </div>
+
+        <div class="infobox-data">
+          <div class="infobox-content">Accepted</div>
+          <div class="infobox-content">1,205</div>
+        </div>
+      </div>
+
+      <div class="infobox infobox-purple infobox-big infobox-dark">
+        <div class="infobox-icon">
+          <i class="ace-icon fa icon-home"></i>
+        </div>
+
+        <div class="infobox-data">
+          <div class="infobox-content">S0</div>
+          <div class="infobox-content">1,205</div>
+        </div>
+      </div>
+
+      
+    <div class="infobox infobox-green infobox-big infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">m</div>
+            <div class="infobox-content">1,205</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-blue2 infobox-big infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">Duration</div>
+            <div class="infobox-content">1,205</div>
+          </div>
+        </div>
+
+        <div class="infobox infobox-blue3 infobox-big   infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">Health</div>
+            <div class="infobox-content">1,205</div>
+          </div>
+        </div>
+
+
+        <div class="infobox infobox-grey infobox-big   infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">Submission time</div>
+            <div class="infobox-content">1,205</div>
+          </div>
+        </div>
+
+
+
+        <div class="infobox infobox-green infobox-big   infobox-dark">
+          <div class="infobox-icon">
+            <i class="ace-icon fa icon-home"></i>
+          </div>
+
+          <div class="infobox-data">
+            <div class="infobox-content">Shoks</div>
+            <div class="infobox-content">0</div>
+          </div>
+        </div>    
+
+
+    </div>
+
+  </div>
+
+
   <div class="row-fluid">
     <div class="span12">
       <div id='chartDeltas'></div>
@@ -55,16 +167,35 @@ $(document).ready(function(){
   var id = getUrlParameter('id')
   console.log(id)
 
-  $.post("/run",{id:id}, function(data){
-    console.log("data")  
+  $.get("/deltas",{id:id}, function(data){
     data = JSON.parse(data)
-    deltas = data["deltas"]
-    hist = data["histogram"]
-    paths = data["paths"]
-    draw_delta(deltas)
-    draw_hist(hist)
-    draw_paths(paths)
+    draw_delta(data)
+
   })
+
+  $.get("/histogram",{id:id}, function(data){
+    data = JSON.parse(data)
+    draw_hist(data)
+
+  })
+
+  $.get("/paths",{id:id}, function(data){
+    data = JSON.parse(data)
+    draw_paths(data)
+
+  })
+
+
+  // $.post("/run",{id:id}, function(data){
+  //   console.log("data")  
+  //   data = JSON.parse(data)
+  //   deltas = data["deltas"]
+  //   hist = data["histogram"]
+  //   paths = data["paths"]
+  //   // draw_delta(deltas)
+  //   // draw_hist(hist)
+  //   // draw_paths(paths)
+  // })
 
   function draw_delta(data)
   {

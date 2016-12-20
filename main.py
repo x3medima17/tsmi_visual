@@ -23,10 +23,13 @@ class Application(tornado.web.Application):
         handlers = [
             (r"/", MainHandler),
             (r"/run", RunHandler),
+            (r"/plot", PlotHandler),
+            (r"/get_fields", GetFieldsHander),
+
             (r"/deltas", DeltasHandler),
             (r"/histogram", HistogramHandler),
             (r"/paths",PathsHandler),
-	    (r"/download", DownloadHandler),
+    	    (r"/download", DownloadHandler),
         ]
 
         settings = dict(
@@ -40,12 +43,29 @@ class Application(tornado.web.Application):
 
 class DownloadHandler(tornado.web.RequestHandler):
     def get(self):
-	id = self.get_argument("id")
+	id = self.get_argument("id", None)
 	mid = ObjectId(id)   
 	item = db.runs.find_one({"_id" : mid})
 	self.set_header('Content-Type', 'application/octet-stream')
 	self.set_header('Content-Disposition', 'attachment; filename=%s.log' % item["time"])
 	self.write(item["raw"])
+
+class GetFieldsHander(tornado.web.RequestHandler):
+    def get(self):
+        id = self.get_argument("id")
+        mid = ObjectId(id)   
+        item = db.runs.find_one({"_id" : mid})
+        self.write(json.dumps(item["data"].keys()))
+
+
+class PlotHandler(tornado.web.RequestHandler):
+    def get(self):
+        field = self.get_argument("field")
+        id = self.get_argument("id")
+        mid = ObjectId(id)   
+        item = db.runs.find_one({"_id" : mid})
+        self.write(json.dumps(item["data"][field]))
+
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -91,41 +111,7 @@ class MainHandler(tornado.web.RequestHandler):
 	req["meta"]["min_delta"] = min(data["delta"])
 	db.runs.insert(req)
 	return
- 
-	with open("/var/www/html/tsmi/%s.log" % time, "w") as f:
-		f.write(raw)
-        meta = raw.split("\n")[:5]
 
-        data = "".join(raw.split("\n")[8:])
-        M = np.fromstring(data, sep="\t").reshape(-1, 13)
-        deltas = M[:,12]
-        
-        # Metropolis results
-        out = dict(
-            zone=[map(float, x.replace("(", "").replace(")", "").split(';')) for x in meta[1].strip().split(" ")],
-            m=float(meta[2].split(":")[1]),
-            s0=float(meta[3].split(":")[1]),
-            max_iters=int(meta[4].split(":")[1]),
-            min_delta=min(M[:, 12]),
-            accepted=int(sum(M[:, 7])),
-            total_samples=M.shape[0],
-            list_of_lists=M.tolist(),
-            raw=raw,
-            time=time,
-        )
-        dmax = max(deltas)
-        dmin = min(deltas)
-        alpha = out["accepted"]*1.0/ out["total_samples"]
-        stdev = np.std(deltas)
-        a = 1 - dmin
-        b = (1-alpha**2)
-        c = 1 - np.mean(deltas)
-        health = a + b + c
-        health /= 3
-
-        out["health"] = health
-        db.runs.insert(out)
-        self.write("hello")
 
 
 class DeltasHandler(tornado.web.RequestHandler):
@@ -141,9 +127,9 @@ class HistogramHandler(tornado.web.RequestHandler):
         id = self.get_argument("id", None)
         mid = ObjectId(id)
         item = db.runs.find_one({"_id": mid})
-        A = np.array(item["list_of_lists"])
-        deltas = A[:, 12].tolist()
-        hist = np.histogram(A[:, 12],300)
+        
+        deltas = item["data"]["delta"]
+        hist = np.histogram(deltas,300)
         tmp = hist[1].tolist()
         step = 0
         if len(tmp) > 1:
@@ -165,16 +151,14 @@ class PathsHandler(tornado.web.RequestHandler):
             return
         mid = ObjectId(id)
         item = db.runs.find_one({"_id": mid})
-        A = np.array(item["list_of_lists"])
        
        
-        x1 = A[:,8]
-        y1 = A[:,9]
+        x1 = item["data"]["positions"][0]
+        y1 = item["data"]["positions"][1]
         
-        x2 = A[:,10]
-        y2 = A[:,11]
+        x2 = item["data"]["positions"][2]
+        y2 = item["data"]["positions"][2]
 
-        paths = [A[:,8:10].tolist(), A[:,10:12].tolist()]
         out =  [
                     dict(
                         data = np.array([x1,y1]).transpose().tolist(),#[x1.tolist(), x2.tolist()],

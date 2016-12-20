@@ -82,7 +82,7 @@
 
           <div class="infobox-data">
             <div class="infobox-content">Duration</div>
-            <div class="infobox-content">1,205</div>
+            <div class="infobox-content">placeholder</div>
           </div>
         </div>
 
@@ -140,13 +140,8 @@
   </div>
 
 
-  <div class="row-fluid">
-    <div class="span12">
-      <div id='chartDeltas'></div>
-      
-    </div><!--/span-->
-  </div><!--/row-->
-
+<div id="dynamic_charts">
+</div>
   <div class="row-fluid">
     <div class="span12">
       <div id='chartHist'></div>
@@ -188,15 +183,56 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+charts = 0
+FIELDS = []
+plot_field("delta")
+
+function plot_field(field) {
+  var id = getUrlParameter('id')
+
+  charts++
+  var template = "<div class=\"row-fluid\">\
+                    <div class=\"span12\">\
+                      <div id=\"chart"+charts+"\"></div>\
+                    </div><!--/span-->\
+                  </div><!--/row-->"
+  $("#dynamic_charts").append(template)
+
+  $.get("/plot",{id:id, field: field}, function(data){
+    data = JSON.parse(data)
+    var chartData = {
+      type: "line",  // Specify your chart type here.
+      title: {
+        text: field // Adds a title to your chart
+      },
+      legend: {}, // Creates an interactive legend
+      series: [  // Insert your series data here.
+          {
+          values: data,
+          text : field
+          }
+      ]
+    };
+    zingchart.render({ // Render Method[3]
+      id: "chart"+charts,
+      data: chartData,
+      height: 400,
+      width: $("#chart"+charts).parent().width() - 20
+    });
+  })
+
+}
+
 $(document).ready(function(){
+
   var id = getUrlParameter('id')
   console.log(id)
 
-  $.get("/deltas",{id:id}, function(data){
+  $.get("/get_fields", {id : id}, function(data){
     data = JSON.parse(data)
-    draw_delta(data)
-
+    FIELDS = data
   })
+
 
   $.get("/histogram",{id:id}, function(data){
     data = JSON.parse(data)

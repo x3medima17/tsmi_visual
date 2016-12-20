@@ -39,12 +39,23 @@
 						
 						<th> 0</th>
 						<th>
-							<a href="/download?id={{ run['_id'] }}">
-							<button class="btn btn-minier btn-info">
-						   		<i class="ace-icon fa icon-cloud-download "></i>
-								Download	
-							</button>
-							</a>
+							<div class="btn-group">
+													
+								<button data-toggle="dropdown" class="btn btn-mini btn-info dropdown-toggle" aria-expanded="false">
+							   		<i class="ace-icon fa icon-cloud-download icon-on-right"></i>
+									Download	
+								</button>
+
+								<ul class="dropdown-menu dropdown-default" style="width:10px">
+									<li>
+										<a href="/download/tab?id={{ run['_id'] }}">Tab</a>
+									</li>
+
+									<li>
+										<a href="/download/json?id={{ run['_id'] }}">JSON</a>
+									</li>
+								</ul>
+							</div>
 						</th>
 					</tr>
 					{% end %}

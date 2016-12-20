@@ -29,7 +29,8 @@ class Application(tornado.web.Application):
             (r"/deltas", DeltasHandler),
             (r"/histogram", HistogramHandler),
             (r"/paths",PathsHandler),
-    	    (r"/download", DownloadHandler),
+            (r"/download/json", DownloadHandler.JSONDownloadHandler),
+            (r"/download/tab", DownloadHandler.TabDownloadHandler),
         ]
 
         settings = dict(
@@ -42,13 +43,45 @@ class Application(tornado.web.Application):
         tornado.web.Application.__init__(self, handlers, **settings)
 
 class DownloadHandler(tornado.web.RequestHandler):
-    def get(self):
-	id = self.get_argument("id", None)
-	mid = ObjectId(id)   
-	item = db.runs.find_one({"_id" : mid})
-	self.set_header('Content-Type', 'application/octet-stream')
-	self.set_header('Content-Disposition', 'attachment; filename=%s.log' % item["time"])
-	self.write(item["raw"])
+    class JSONDownloadHandler(tornado.web.RequestHandler):
+        def get(self):
+        	id = self.get_argument("id", None)
+        	mid = ObjectId(id)   
+        	item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
+        	self.set_header('Content-Type', 'application/octet-stream')
+        	self.set_header('Content-Disposition', 'attachment; filename=%s.json' % item["meta"]["time"])
+        	self.write(json.dumps(item))
+    
+    class TabDownloadHandler(tornado.web.RequestHandler):
+        def get(self):
+            id = self.get_argument("id", None)
+            mid = ObjectId(id)   
+            item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
+            doc = item
+            header = []
+            out = ""
+            data = item["data"]
+            m = len(data["delta"])
+            for key in data.keys():
+                if not key in header:
+                    header.append(key)
+            out += "\t".join(header) + "\n"
+            for i in range(m):
+                for key in header:
+                    if key == "positions":
+                        out += "[ "
+                        for item in data[key]:
+                            out += str(item[i]) + " "
+                        out += "]\t"
+                    else:
+                        out += str(data[key][i]) + "\t"
+                out += "\n" 
+            
+            print("aaaaaaaaaaaaaaa\n\n\naaaaaaaaaaa")
+            self.set_header('Content-Type', 'application/octet-stream')
+            self.set_header('Content-Disposition', 'attachment; filename=%s.tab' % doc["meta"]["time"])
+            self.write(out)
+
 
 class GetFieldsHander(tornado.web.RequestHandler):
     def get(self):

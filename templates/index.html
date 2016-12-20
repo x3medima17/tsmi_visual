@@ -18,7 +18,7 @@
 						<th class="hidden-phone">accepted</th>
 						<th class="hidden-480">Minimum delta</th>
 						<th class="sorting desc">Health</th>
-
+						<th> Download </th>
 					</tr>
 				</thead>
 
@@ -28,16 +28,24 @@
 						<td>
 							<a class="submission_info" href="/run?id={{ run['_id'] }}">{{ (run["_id"]) }}</a>
 						</td>
-						<td>{{ run["time"] }}</td>
-						<td class="hidden-phone">{{ run["max_iters"] }}</td>
-						<td class="hidden-480">{{ run["total_samples"] }}</td>
-						<td>{{ run["m"] }}</td>
-						<td>{{ run["s0"] }}</td>
-						<td>{{ run["accepted"] }}</td>
+						<td>{{ run["meta"]["time"] }}</td>
+						<td>{{ run["meta"]["max_iters"] }}</td>
+						<td class="hidden-phone">{{ len(run["data"]["delta"])}}</td>
+						<td>{{ run["meta"]["m"] }}</td>
+						<td>{{ run["meta"]["S0"] }}</td>
+						<td class="hidden-480">{{ run["data"]["accepted"].count(True) }}</td>
 						
-						<td class="hidden-480">{{ run["min_delta"] }}</td>
+						<td class="hidden-480">{{ run["meta"]["min_delta"] }}</td>
 						
-						<th> {{ run["health"] }} </th>
+						<th> 0</th>
+						<th>
+							<a href="/download?id={{ run['_id'] }}">
+							<button class="btn btn-minier btn-info">
+						   		<i class="ace-icon fa icon-cloud-download "></i>
+								Download	
+							</button>
+							</a>
+						</th>
 					</tr>
 					{% end %}
 				

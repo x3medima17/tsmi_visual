@@ -4,7 +4,7 @@ from time import gmtime, strftime
 
 
 f_data = open("data/states.out").read()
-curr_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+curr_time = strftime("%d-%m-%Y %H:%M:%S", gmtime())
 
 data = {
     "data" : f_data,

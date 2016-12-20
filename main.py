@@ -10,6 +10,7 @@ import pymongo
 import numpy as np
 from bson.objectid import ObjectId
 import json
+import time as timee
 
 client = pymongo.MongoClient()
 db = client.tsmi
@@ -24,7 +25,8 @@ class Application(tornado.web.Application):
             (r"/run", RunHandler),
             (r"/deltas", DeltasHandler),
             (r"/histogram", HistogramHandler),
-            (r"/paths",PathsHandler)
+            (r"/paths",PathsHandler),
+	    (r"/download", DownloadHandler),
         ]
 
         settings = dict(
@@ -36,6 +38,14 @@ class Application(tornado.web.Application):
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 
+class DownloadHandler(tornado.web.RequestHandler):
+    def get(self):
+	id = self.get_argument("id")
+	mid = ObjectId(id)   
+	item = db.runs.find_one({"_id" : mid})
+	self.set_header('Content-Type', 'application/octet-stream')
+	self.set_header('Content-Disposition', 'attachment; filename=%s.log' % item["time"])
+	self.write(item["raw"])
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -45,9 +55,45 @@ class MainHandler(tornado.web.RequestHandler):
     def post(self):
         print(self.request.body)
     	req = json.loads(self.request.body)
-    	raw = req["data"]
-        time = req["time"]
-
+    	data = req["data"]
+	meta = req["meta"]
+	
+	required = ["iters", "param_index", "Ha", "S0", "new_value", "acceptance_probability", "random_probability", "accepted", "positions", "delta"]
+	for item in required:
+		if not item in data.keys():
+			raise Exception("%s missing" % item)
+	m = len(data["S0"])
+	for key, value in data.iteritems():
+		if key == "positions":
+			for item in value:
+				if len(item) != m:
+					raise Exception("Wrong size in positions %s vs %s" % (m, len(item)))
+		else:
+			if len(value) != m:
+				raise Exception("Wrong size in %s, %s vs %s" % (key, m, len(value)))
+	print("OK!!")
+	f = open("/var/www/html/tsmi/%s.tab" % meta["time"], "w")
+	header = required
+	for key in data.keys():
+		if not key in header:
+			header.append(key)
+	f.write("\t".join(header) + "\n")
+	for i in range(m):
+		for key in header:
+			if key == "positions":
+				f.write("[ ")
+				for item in data[key]:
+					f.write(str(item[i]) + " ")
+				f.write("]\t")
+			else:
+				f.write(str(data[key][i]) + "\t")
+		f.write("\n") 
+	req["meta"]["min_delta"] = min(data["delta"])
+	db.runs.insert(req)
+	return
+ 
+	with open("/var/www/html/tsmi/%s.log" % time, "w") as f:
+		f.write(raw)
         meta = raw.split("\n")[:5]
 
         data = "".join(raw.split("\n")[8:])
@@ -87,8 +133,7 @@ class DeltasHandler(tornado.web.RequestHandler):
         id = self.get_argument("id", None)
         mid = ObjectId(id)
         item = db.runs.find_one({"_id": mid})
-        A = np.array(item["list_of_lists"])
-        deltas = A[:, 12].tolist()
+        deltas = item["delta"] 
         self.write(json.dumps(deltas))
 
 class HistogramHandler(tornado.web.RequestHandler):
@@ -159,13 +204,13 @@ class RunHandler(tornado.web.RequestHandler):
                 
 
         out = dict(
-                min_delta=item["min_delta"],
-                s0=item["s0"],
-                m=item["m"],
-                total_samples=item["total_samples"],
-                accepted=item["accepted"],
-                health=item["health"],
-                time=item["time"]
+                min_delta=item["meta"]["min_delta"],
+                s0=item["meta"]["S0"],
+                m=item["meta"]["m"],
+                total_samples=len(item["data"]["delta"]),
+                accepted=item["data"]["accepted"].count(True),
+                health = 0,
+                time=item["meta"]["time"]
             )
         self.render("run.html",**out)
 

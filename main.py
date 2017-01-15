@@ -58,7 +58,7 @@ class DownloadHandler(tornado.web.RequestHandler):
             mid = ObjectId(id)   
             item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
             doc = item
-            required = ["iters", "param_index", "Ha", "S0", "new_value", "acceptance_probability", "random_probability", "accepted", "positions", "delta"]
+            header  = ["iters", "param_index", "Ha", "S0", "new_value", "acceptance_probability", "random_probability", "accepted", "positions", "delta"]
             out = ""
             data = item["data"]
             m = len(data["delta"])

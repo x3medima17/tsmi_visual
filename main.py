@@ -190,7 +190,7 @@ class PathsHandler(tornado.web.RequestHandler):
         y1 = item["data"]["positions"][1]
         
         x2 = item["data"]["positions"][2]
-        y2 = item["data"]["positions"][2]
+        y2 = item["data"]["positions"][3]
 
         out =  [
                     dict(

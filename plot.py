@@ -11,6 +11,8 @@ from collections import Counter
 import os
 import shutil
 import gridfs
+import matplotlib as mpl
+mpl.use('Agg')
 
 
 client = pymongo.MongoClient()

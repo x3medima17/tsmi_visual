@@ -14,7 +14,7 @@ import time as timee
 
 client = pymongo.MongoClient()
 db = client.tsmi
-
+fs = gridfs.GridFS(db)
 
 tornado.options.parse_command_line()
 
@@ -31,6 +31,8 @@ class Application(tornado.web.Application):
             (r"/paths",PathsHandler),
             (r"/download/json", DownloadHandler.JSONDownloadHandler),
             (r"/download/tab", DownloadHandler.TabDownloadHandler),
+            (r"/download/zip", DownloadHandler.ZipDownloadHandler),
+
         ]
 
         settings = dict(
@@ -45,12 +47,20 @@ class Application(tornado.web.Application):
 class DownloadHandler(tornado.web.RequestHandler):
     class JSONDownloadHandler(tornado.web.RequestHandler):
         def get(self):
-        	id = self.get_argument("id", None)
-        	mid = ObjectId(id)   
-        	item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
-        	self.set_header('Content-Type', 'application/octet-stream')
-        	self.set_header('Content-Disposition', 'attachment; filename=%s.json' % item["meta"]["time"])
-        	self.write(json.dumps(item))
+            id = self.get_argument("id", None)
+            mid = ObjectId(id)   
+            item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
+            self.set_header('Content-Type', 'application/octet-stream')
+            self.set_header('Content-Disposition', 'attachment; filename=%s.json' % item["meta"]["time"])
+            self.write(json.dumps(item))
+    
+    class ZipDownloadHandler(tornado.web.RequestHandler):
+        def get(self):
+            id = self.get_argument("id", None)
+            zip = fs.get_last_version('{}.zip'.format(id)).read()
+            self.set_header('Content-Type', 'application/octet-stream')
+            self.set_header('Content-Disposition', 'attachment; filename=%s.zip' % item["meta"]["time"])
+            self.write(zip)
     
     class TabDownloadHandler(tornado.web.RequestHandler):
         def get(self):
@@ -190,7 +200,7 @@ class PathsHandler(tornado.web.RequestHandler):
         y1 = item["data"]["positions"][1]
         
         x2 = item["data"]["positions"][2]
-        y2 = item["data"]["positions"][2]
+        y2 = item["data"]["positions"][3]
 
         out =  [
                     dict(

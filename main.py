@@ -11,6 +11,7 @@ import numpy as np
 from bson.objectid import ObjectId
 import json
 import time as timee
+import gridfs
 
 client = pymongo.MongoClient()
 db = client.tsmi
@@ -58,6 +59,8 @@ class DownloadHandler(tornado.web.RequestHandler):
         def get(self):
             id = self.get_argument("id", None)
             zip = fs.get_last_version('{}.zip'.format(id)).read()
+            mid = ObjectId(id)   
+            item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
             self.set_header('Content-Type', 'application/octet-stream')
             self.set_header('Content-Disposition', 'attachment; filename=%s.zip' % item["meta"]["time"])
             self.write(zip)

@@ -22,14 +22,14 @@ fs = gridfs.GridFS(db)
 
 
 def build_stats(oid):
-	path = "/tmp/{}".format(oid)
+	path = "/tmp/tsmi/{}".format(oid)
 
 	try:
 		shutil.rmtree(path)
 	except:
 		pass
 
-	os.mkdir(path)
+	os.makedirs(path)
 	id = ObjectId(oid)
 
 
@@ -190,17 +190,20 @@ def build_stats(oid):
 
 	# sys.exit()
 	plt.savefig("{}/accepted.png".format(path))       
-	shutil.make_archive("{}/out".format(path), 'zip', path)
-	zip = open("{}/out.zip".format(path), "rb").read()
+	
+	shutil.make_archive("/tmp/tsmi/out".format(path), 'zip', path)
+	zip = open("/tmp/tsmi/out.zip", "rb").read()
 	with fs.new_file(filename="{}.zip".format(oid)) as fb:
 		fb.write(zip)
 
 	plt.clf()
+	shutil.rmtree(path)
+	os.remove("/tmp/tsmi/out.zip")
 	# plt.show()
 
 if __name__ == "__main__":
-		# build_stats("5876b835f74786316bd909d9")
-		# sys.exit()
+	build_stats("5876b835f74786316bd909d9")
+	sys.exit()
 	lst = list(db.runs.find())
 	print len(lst)
 	i = 0

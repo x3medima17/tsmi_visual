@@ -302,6 +302,7 @@ class StatsBuilder(object):
 		for key, value in figs.iteritems():
 			for i,item in enumerate(value):
 				item.savefig("{}/{}{}.png".format(path,key,i))
+				item.clf()
 		# figs["main"].savefig("/tmp/main.png")       
 
 

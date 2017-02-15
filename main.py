@@ -12,6 +12,8 @@ from bson.objectid import ObjectId
 import json
 import time as timee
 import gridfs
+import plot 
+import multiprocessing as mp
 
 client = pymongo.MongoClient()
 db = client.tsmi
@@ -71,9 +73,10 @@ class DownloadHandler(tornado.web.RequestHandler):
             mid = ObjectId(id)   
             item = db.runs.find_one({"_id" : mid}, {"_id" : 0})
             doc = item
-            header = ["iters", "param_index", "Ha", "S0", "new_value", "acceptance_probability", "random_probability", "accepted", "positions", "delta"]
+            header = ["iters", "param_index", "param_name", "Ha", "S0", "new_value", "acceptance_probability", "random_probability", "accepted", "positions", "delta"]
             out = ""
             data = item["data"]
+	    meta = item["meta"]
             m = len(data["delta"])
             for key in data.keys():
                 if not key in header:
@@ -81,6 +84,10 @@ class DownloadHandler(tornado.web.RequestHandler):
             out += "\t".join(header) + "\n"
             for i in range(m):
                 for key in header:
+		    if key == "param_name":
+			curr = meta["param_info"][data["param_index"][i]]
+			out += "{1}{0}\t".format(curr[0]+1, curr[1][0])
+			continue	
                     if key == "positions":
                         out += "[ "
                         for item in data[key]:
@@ -119,7 +126,7 @@ class MainHandler(tornado.web.RequestHandler):
         self.render("index.html", runs=runs)
 
     def post(self):
-        print(self.request.body)
+        #print(self.request.body)
     	req = json.loads(self.request.body)
     	data = req["data"]
 	meta = req["meta"]
@@ -137,7 +144,6 @@ class MainHandler(tornado.web.RequestHandler):
 		else:
 			if len(value) != m:
 				raise Exception("Wrong size in %s, %s vs %s" % (key, m, len(value)))
-	print("OK!!")
 	f = open("/var/www/html/tsmi/%s.tab" % meta["time"], "w")
 	header = required
 	for key in data.keys():
@@ -155,9 +161,16 @@ class MainHandler(tornado.web.RequestHandler):
 				f.write(str(data[key][i]) + "\t")
 		f.write("\n") 
 	req["meta"]["min_delta"] = min(data["delta"])
-	db.runs.insert(req)
-	return
+	oid = db.runs.insert(req)
+	def worker(oid):
+		obj = plot.StatsBuilder(oid)
+		obj.plot_all()
+		obj.insert()
 
+	p = mp.Process(target=worker, args=(oid,))
+	p.start()
+	p.join()
+	print("OK!!")
 
 
 class DeltasHandler(tornado.web.RequestHandler):

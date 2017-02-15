@@ -13,26 +13,31 @@ import shutil
 import gridfs
 import fractions
 import matplotlib as mpl
+import gc
 
+import multiprocessing as mp
 from pylab import rcParams
-rcParams['figure.figsize'] = 15, 10
+
+WIDTH = 53
+HEIGHT = 20
+rcParams['figure.figsize'] = WIDTH, HEIGHT
+rcParams.update({'font.size': 26})
 
 
 mpl.use('Agg')
 
-
-client = pymongo.MongoClient("128.199.148.157")
-
-db = client.tsmi
-
-res = db.authenticate('tsmi', '157359')
-fs = gridfs.GridFS(db)
+def connect():
+	client = pymongo.MongoClient()
+	db = client.tsmi
+	fs = gridfs.GridFS(db)
+	return db,fs
 
 class StatsBuilder(object):
 	def __init__(self, id):
+		self.db, self.fs = connect()
 		self.id = id
 		self.oid = ObjectId(id)
-		self.item = db.runs.find_one({"_id" : self.oid})
+		self.item = self.db.runs.find_one({"_id" : self.oid})
 		if not self.item:
 			print("Fetch failed")
 
@@ -63,9 +68,30 @@ class StatsBuilder(object):
 		ax.set_xlabel("Value")
 		ax.set_ylabel("Occurence")
 		ax.grid(True)
+		plt.tight_layout()
 
 		self.figures["main"] = [fig]
 		# plt.savefig("{}/main.png".format(path))       
+
+	def get_param_dict(self):
+		"""
+			Example
+			{
+				'k_perm' : {
+						'<formation>' : <index>,
+					},
+				'p_i_red' : {
+						'<formation>' : <index>,
+					}
+			}
+		"""
+		params = {}
+		info = self.item["meta"]["param_info"]
+		for i, item in enumerate(info):
+			if not item[1] in params.keys():
+				params[item[1]] = {}
+			params[item[1]][item[0]] = i
+		return params
 
 	def get_formation_dict(self):
 		""" 
@@ -91,22 +117,25 @@ class StatsBuilder(object):
 
 		figs = []
 		item = self.item
-		
+		nRows, nCols = self.factorize2(len(formations.keys()))
+		fig = plt.figure()
+		i = 0	
 		for key, value in formations.iteritems():
-			fig = plt.figure()
-			ax = plt.subplot(111)
+			i += 1
+			ax = plt.subplot(nRows, nCols, i)
 			x = item["data"]["positions"][value["k_perm"]]
 			y = item["data"]["positions"][value["p_i_red"]]
 			ax.plot(x, y, "ro")# bins=np.arange(min(deltas), max(deltas), 0.1))
-			ax.set_title('Formation {} path'.format(key))
-			fig.canvas.set_window_title('Formation {} path'.format(key))
+			ax.set_title('f{}'.format(key+1))
 			ax.grid(True)
 
-			ax.set_xlabel('k_perm')
-			ax.set_ylabel('p_i_red')
-
-
-			figs.append(fig)
+			ax.set_xlabel("{}{}".format(value.keys()[0][0], key+1))
+			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
+			plt.xticks(rotation=70)
+			plt.yticks(rotation=70)
+		#plt.set_fontsize(20)	
+		plt.tight_layout()
+		figs.append(fig)
     
 		self.figures["paths"] = figs
 
@@ -114,30 +143,32 @@ class StatsBuilder(object):
 	def plot_positions(self):
 		figs = []
 		item = self.item
-		N = len(item["data"]["positions"])
-		assert N%2 == 0
-		qq = 0
-		for i in range(N/2):
-			qq += 1
-			x = item["data"]["positions"][2*i]
-			y = item["data"]["positions"][2*i+1]
-
-			fig = plt.figure()
-			plt.subplot(121)
-			plt.plot(range(1,len(x)+1), x)
-			plt.title('Param {}'.format((qq-1)*2 +1))
-			plt.grid(True)
-
-			plt.subplot(122)
-			plt.plot(range(1,len(y)+1), y)
-			plt.title('Param {}'.format((qq-1)*2 +2))
-			plt.grid(True)
-			  
-			figs.append(fig)
-
-			# plt.savefig("{}/positions{}.png".format(path,qq))       
-		self.figures["positions"] = figs
-
+		params = self.get_param_dict()
+		nRows = len(params.keys())
+		nCols = max([len(x) for x in params.values()])
+		fig = plt.figure()
+		i = 1
+		for param, value  in params.iteritems():
+			for form_index, index in value.iteritems():
+				ax = plt.subplot(nRows,nCols,i)
+				ax.ticklabel_format(style='sci', axis='y')
+				x = range(len(item["data"]["positions"][index]))
+				y = item["data"]["positions"][index]
+				ax.plot(x,y)
+				ax.set_title("{}{}".format(param[0], form_index+1))
+				
+				ax.grid(True)
+				ax.set_xlabel("Iteration")
+				#ax.set_ylabel("{}{}".format(param[0], form_index+1))
+				plt.yticks(rotation=50)
+				i+=1
+			
+		plt.tight_layout()
+		figs.append(fig)
+		print(len(figs))
+		self.figures["positions"] = figs	
+				
+			
 
 	def plot_freq(self, bins=10):	
 
@@ -145,24 +176,31 @@ class StatsBuilder(object):
 
 		figs = []
 		item = self.item
-		
+		nRows, nCols = self.factorize2(len(formations.keys()))	
+		fig = plt.figure(figsize=(WIDTH, HEIGHT/2))
+		i = 1
 		for key, value in formations.iteritems():
-			fig = plt.figure()
-			ax = plt.subplot(111)
-			x = item["data"]["positions"][value["k_perm"]]
-			y = item["data"]["positions"][value["p_i_red"]]
+			ax = fig.add_subplot(nRows, nCols, i)
+			x = item["data"]["positions"][value[value.keys()[0]]]
+			y = item["data"]["positions"][value[value.keys()[1]]]
 
 			plt.hist2d(x, y, bins=bins, norm=LogNorm())
 			plt.colorbar()
 
-			ax.set_title('Formation {} frequency'.format(key))
-			fig.canvas.set_window_title('Formation {} frequency'.format(key))
+			ax.set_title('f{}'.format(key+1))
+			#fig.canvas.set_window_title('Formation {} frequency'.format(key+1))
 			ax.grid(True)
 
-			ax.set_xlabel('k_perm')
-			ax.set_ylabel('p_i_red')
+			ax.set_xlabel("{}{}".format(value.keys()[0][0], key+1))
+			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
+		
+			ax = self.set_fontsize(ax, 18)	
+			plt.xticks(rotation=50) 
+			plt.yticks(rotation=50) 
+			i += 1
 
-			figs.append(fig)
+		plt.tight_layout()
+		figs.append(fig)
 
 		self.figures["frequ"] = figs
 
@@ -199,12 +237,12 @@ class StatsBuilder(object):
 		# add some text for labels, title and axes ticks
 		ax.set_ylabel('Points')
 		ax.set_title('Accepted and dropped points by parameter')
-		# ax.set_xticks(ind + width / 2)
 		info = self.item["meta"]["param_info"]
+		ax.set_xticks(ind + width / 2)
 		labels = []
 		for item in info:
-			labels.append("Frm {} {}".format(item[0], item[1]))
-			labels.append("")
+			labels.append("{}{}".format(item[1][:1], item[0]+1))
+			#labels.append("")
 		ax.set_xticklabels(labels, ha='left')
 		# fig.subplots_adjust(hspace=-0.5)
 
@@ -217,7 +255,7 @@ class StatsBuilder(object):
 		    """
 		    for rect in rects:
 		        height = rect.get_height()
-		        ax.text(rect.get_x() + rect.get_width()/2., 1.05*height,
+		        ax.text(rect.get_x() + rect.get_width()/2., 1.00*height,
 		                '%d' % int(height),
 		                ha='center', va='bottom')
 
@@ -227,6 +265,12 @@ class StatsBuilder(object):
 		self.figures["accepted_stats"] = [fig]
 		# sys.exit() 
 		# plt.savefig("{}/accepted.png".format(path))       
+	
+	@staticmethod
+	def set_fontsize(ax, size):
+		for label in (ax.get_xticklabels() + ax.get_yticklabels()):
+    			label.set_fontsize(size) # Size here overrides font_prop
+		return ax
 
 	@staticmethod
 	def factorize2(n):
@@ -248,10 +292,11 @@ class StatsBuilder(object):
 				vals = self.item["data"]["positions"][qq]
 				info = self.item["meta"]["param_info"][qq]
 				qq+=1
-				plt.subplot(w*100 + h*10 + qq)
-				plt.hist(vals, 50)# bins=np.arange(min(deltas), max(deltas), 0.1))
-				plt.title('Formation {} {} hist'.format(info[0], info[1]))
-				plt.grid(True)
+				ax = plt.subplot(w*100 + h*10 + qq)
+				ax.hist(vals, 50)# bins=np.arange(min(deltas), max(deltas), 0.1))
+				ax.title('Formation {} {} hist'.format(info[0], info[1]))
+				ax.grid(True)
+				ax = set_fontsize(ax, 18)
 		self.figures["positions_hists"] = fig
 
 	def plot_field_line(self, field):
@@ -306,15 +351,43 @@ class StatsBuilder(object):
 		# figs["main"].savefig("/tmp/main.png")       
 
 
-		shutil.make_archive("/tmp/tsmi/out", 'zip', path)
-		zip = open("/tmp/tsmi/out.zip", "rb").read()
-		with fs.new_file(filename="{}.zip".format(oid)) as fb:
+		shutil.make_archive("/tmp/tsmi/out{}".format(self.id), 'zip', path)
+		zip = open("/tmp/tsmi/out{}.zip".format(self.id), "rb").read()
+		with self.fs.new_file(filename="{}.zip".format(oid)) as fb:
 			fb.write(zip)
 
 		plt.clf()
 		shutil.rmtree(path)
-		os.remove("/tmp/tsmi/out.zip")
+		os.remove("/tmp/tsmi/out{}.zip".format(self.id))
 	
+	@staticmethod
+	def reset():
+		#fs.chunks.remove({})
+		#fs.files.remove({})
+		db,fs = connect()
+		db['fs.chunks'].remove({});
+		db['fs.files'].remove({});
+
+	@staticmethod
+	def update():
+		StatsBuilder.reset()
+		db, fs = connect()
+		lst = db.runs.find({}, {"_id" : 1})
+		for i, item in enumerate(lst):
+			p = mp.Process(target=StatsBuilder.worker, args=(item["_id"],))
+			p.start()
+			p.join()
+	@staticmethod
+	def worker(oid):
+		db, fs = connect()
+		obj = StatsBuilder(oid)
+		print(oid)
+		obj.plot_all()
+		obj.insert()
+	
+	def __del__(self):
+		plt.close()
+		gc.collect()	
 
 def build_stats(oid):
 	

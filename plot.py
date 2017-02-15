@@ -118,11 +118,11 @@ class StatsBuilder(object):
 		figs = []
 		item = self.item
 		nRows, nCols = self.factorize2(len(formations.keys()))
-		fig = plt.figure()
+		fig = plt.figure(figsize=(WIDTH, HEIGHT/2)) 
 		i = 0	
 		for key, value in formations.iteritems():
 			i += 1
-			ax = plt.subplot(nRows, nCols, i)
+			ax = fig.add_subplot(nRows, nCols, i)
 			x = item["data"]["positions"][value["k_perm"]]
 			y = item["data"]["positions"][value["p_i_red"]]
 			ax.plot(x, y, "ro")# bins=np.arange(min(deltas), max(deltas), 0.1))
@@ -344,10 +344,18 @@ class StatsBuilder(object):
 
 		os.makedirs(self.path)
 		pprint(figs)
+		dtime = self.item["meta"]["time"]
 		for key, value in figs.iteritems():
 			for i,item in enumerate(value):
-				item.savefig("{}/{}{}.png".format(path,key,i))
+				if len(value) > 1:
+					fname = "{}/{}{}_{}.png".format(path,key,i, dtime)
+				else:
+					fname = "{}/{}_{}.png".format(path,key, dtime)
+				fname = fname.replace(":","-")
+				item.savefig(fname)	
 				item.clf()
+				hx = ":".join("{:02x}".format(ord(c)) for c in fname)
+				#print(hx)
 		# figs["main"].savefig("/tmp/main.png")       
 
 

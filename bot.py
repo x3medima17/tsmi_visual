@@ -70,7 +70,7 @@ class WatcherThread(threading.Thread):
 				subs = db.subscribers.find()
 				for sub in subs:
 					BOT.sendMessage(chat_id=sub["uid"], text="Server is down!")
-			time.sleep(3)
+			time.sleep(60)
 
 start_handler = CommandHandler('start', start)
 subscribe_handler = CommandHandler('subscribe', subscribe)

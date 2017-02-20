@@ -38,7 +38,6 @@ class Application(tornado.web.Application):
             (r"/download/zip", DownloadHandler.ZipDownloadHandler),
 
             (r"/hook", HookHandler),
-
         ]
 
         settings = dict(

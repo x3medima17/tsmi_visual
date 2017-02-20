@@ -186,6 +186,7 @@ class StatsBuilder(object):
 				ax.set_ylabel("Occurence")
 				ax.grid(True)
 				plt.yticks(rotation=50)
+				plt.xticks(rotation=50)
 				i+=1
 
 

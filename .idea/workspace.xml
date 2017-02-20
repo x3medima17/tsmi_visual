@@ -48,8 +48,8 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
-              <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
+            <state relative-caret-position="748">
+              <caret line="188" column="21" lean-forward="false" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -526,7 +526,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487628802868</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="hists apart&#10;">
+      <created>1487629024081</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1487629024081</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -575,7 +582,8 @@
     <MESSAGE value="syntrax error" />
     <MESSAGE value="hook done&#10;" />
     <MESSAGE value="hists&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="hists&#10;" />
+    <MESSAGE value="hists apart&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="hists apart&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -714,8 +722,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
+        <state relative-caret-position="748">
+          <caret line="188" column="21" lean-forward="false" selection-start-line="188" selection-start-column="21" selection-end-line="188" selection-end-column="21" />
           <folding />
         </state>
       </provider>

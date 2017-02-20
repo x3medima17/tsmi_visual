@@ -170,6 +170,7 @@ class StatsBuilder(object):
 		plt.tight_layout()
 		figs.append(fig)
 
+		self.figures["positions"] = figs
 		figh = plt.figure()
 		i = 1
 		for param, value in params.iteritems():
@@ -185,12 +186,12 @@ class StatsBuilder(object):
 				ax.set_ylabel("Occurence")
 				ax.grid(True)
 				plt.yticks(rotation=50)
+				i+=1
 
 
 		plt.tight_layout()
-		figs.append(figh)
+		self.figures["positions_hists"] = [figh]
 
-		self.figures["positions"] = figs
 
 
 

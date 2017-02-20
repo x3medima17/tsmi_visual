@@ -18,6 +18,7 @@ import gc
 import multiprocessing as mp
 from pylab import rcParams
 
+
 WIDTH = 53
 HEIGHT = 20
 rcParams['figure.figsize'] = WIDTH, HEIGHT

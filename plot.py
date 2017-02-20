@@ -130,6 +130,7 @@ class StatsBuilder(object):
 			ax.set_title('f{}'.format(key+1))
 			ax.grid(True)
 
+
 			ax.set_xlabel("{}{}".format(value.keys()[0][0], key+1))
 			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
 			plt.xticks(rotation=70)
@@ -157,19 +158,41 @@ class StatsBuilder(object):
 				y = item["data"]["positions"][index]
 				ax.plot(x,y)
 				ax.set_title("{}{}".format(param[0], form_index+1))
-				
+
 				ax.grid(True)
 				ax.set_xlabel("Iteration")
 				#ax.set_ylabel("{}{}".format(param[0], form_index+1))
+
+
 				plt.yticks(rotation=50)
 				i+=1
-			
+
 		plt.tight_layout()
 		figs.append(fig)
-		print(len(figs))
-		self.figures["positions"] = figs	
-				
-			
+
+		figh = plt.figure()
+		i = 1
+		for param, value in params.iteritems():
+			for form_index, index in value.iteritems():
+				ax = plt.subplot(nRows, nCols, i)
+				# ax.ticklabel_format(st)
+				vals = item["data"]["positions"][index]
+
+				ax.hist(vals, 50)  # bins=np.arange(min(deltas), max(deltas), 0.1))
+				ax.set_title("{}{} hist".format(param[0], form_index+1))
+
+				ax.set_xlabel("Value")
+				ax.set_ylabel("Occurence")
+				ax.grid(True)
+				plt.yticks(rotation=50)
+
+
+		plt.tight_layout()
+		figs.append(figh)
+
+		self.figures["positions"] = figs
+
+
 
 	def plot_freq(self, bins=10):	
 

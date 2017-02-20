@@ -13,6 +13,7 @@ import time as timee
 import gridfs
 import plot
 import multiprocessing as mp
+from subprocess import Popen
 
 client = pymongo.MongoClient()
 db = client.tsmi
@@ -47,6 +48,10 @@ class Application(tornado.web.Application):
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 
+class HookHandler(tornado.web.RequestHandler):
+    def post(self):
+        print(self.request.body)
+        Popen("git pull")
 
 class DownloadHandler(tornado.web.RequestHandler):
     class JSONDownloadHandler(tornado.web.RequestHandler):

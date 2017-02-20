@@ -53,7 +53,7 @@ class HookHandler(tornado.web.RequestHandler):
     def post(self):
         print(self.request.body)
         Popen("cd /root/tsmi_visual && git pull origin master", shell=True)
-s
+
 
 class DownloadHandler(tornado.web.RequestHandler):
     class JSONDownloadHandler(tornado.web.RequestHandler):

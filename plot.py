@@ -62,7 +62,10 @@ class StatsBuilder(object):
         for key, value in self.item["data"].items():
             zipped = [(i,x) for i,x in enumerate(value) if i in accepted]
             print(key,"--------------------",zipped)
-            _, self.item["data"][key] = zip(*zipped)
+            try:
+                _, self.item["data"][key] = zip(*zipped)
+            except:
+                print(value)
             # print(self.item)
             # print(self.item["data"]["iters"])
 

@@ -57,6 +57,7 @@ class StatsBuilder(object):
         for fil in filters:
             accepted.append(fil(self.item))
 
+        pprint(accepted)
         accepted = reduce(lambda x,y : x & y, accepted)
         print(accepted)
         for key, value in self.item["data"].items():

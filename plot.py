@@ -1,3 +1,5 @@
+import matplotlib as mpl
+mpl.use('Agg')
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -12,7 +14,6 @@ import os
 import shutil
 import gridfs
 import fractions
-import matplotlib as mpl
 import gc
 
 import multiprocessing as mp
@@ -25,7 +26,6 @@ rcParams['figure.figsize'] = WIDTH, HEIGHT
 rcParams.update({'font.size': 26})
 
 
-mpl.use('Agg')
 
 def connect():
 	client = pymongo.MongoClient()

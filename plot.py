@@ -398,8 +398,8 @@ class StatsBuilder(object):
     def update():
         StatsBuilder.reset()
         db, fs = connect()
-        lst = db.runs.find({}, {"_id": 1})
-        for i, item in enumerate(lst):
+        lst = list(db.runs.find({}, {"_id": 1}))
+        for item in tqdm.tqdm(lst):
             p = mp.Process(target=StatsBuilder.worker, args=(item["_id"],))
             p.start()
             p.join()

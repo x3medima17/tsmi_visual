@@ -48,8 +48,8 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="423" column="25" lean-forward="false" selection-start-line="423" selection-start-column="25" selection-end-line="423" selection-end-column="25" />
+            <state relative-caret-position="520">
+              <caret line="409" column="29" lean-forward="true" selection-start-line="409" selection-start-column="29" selection-end-line="409" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -586,7 +586,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487745367231</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="tqdm&#10;">
+      <created>1487745484070</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1487745484070</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -885,8 +892,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="423" column="25" lean-forward="false" selection-start-line="423" selection-start-column="25" selection-end-line="423" selection-end-column="25" />
+        <state relative-caret-position="520">
+          <caret line="409" column="29" lean-forward="true" selection-start-line="409" selection-start-column="29" selection-end-line="409" selection-end-column="29" />
           <folding />
         </state>
       </provider>

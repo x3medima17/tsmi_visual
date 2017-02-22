@@ -68,7 +68,7 @@ class StatsBuilder(object):
             # print(key,"--------------------",zipped)
             try:
                 if key == "positions":
-                    out = list(map(list, zip(*r)))
+                    out = list(map(list, zip(*out)))
                 _, self.item["data"][key] = out
             except ValueError:
                 print(value)

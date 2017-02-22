@@ -134,6 +134,7 @@ class StatsBuilder(object):
             params[item[1]][item[0]] = i
         return params
 
+
     def get_formation_dict(self):
         """
             Example

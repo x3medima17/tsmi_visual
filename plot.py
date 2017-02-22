@@ -68,6 +68,7 @@ class StatsBuilder(object):
                 print(value)
                 print(zipped)
                 print(key)
+                print([(i,x) for i,x in enumerate(value)])
                 raise ValueError
             print(key)
             # print(self.item)

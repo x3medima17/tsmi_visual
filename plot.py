@@ -58,7 +58,6 @@ class StatsBuilder(object):
             accepted.append(fil(self.item))
 
         accepted = reduce(lambda x,y : x & y, accepted)
-        print(accepted)
         for key, value in self.item["data"].items():
             if key == "positions":
                 value = list(map(list, zip(*value)))
@@ -189,8 +188,10 @@ class StatsBuilder(object):
         nCols = max([len(x) for x in params.values()])
         fig = plt.figure()
         i = 1
-        for param, value in params.items():
-            for form_index, index in value.items():
+        for param in sorted(params):
+            value = params[param]
+            for form_index in sorted(value.items()):
+                index = value[form_index]
                 ax = plt.subplot(nRows, nCols, i)
                 ax.ticklabel_format(style='sci', axis='y')
 

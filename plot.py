@@ -1,7 +1,6 @@
 from functools import reduce
 
 import matplotlib as mpl
-
 mpl.use('Agg')
 
 import numpy as np
@@ -22,6 +21,8 @@ import tqdm
 
 import multiprocessing as mp
 from pylab import rcParams
+
+import operator
 
 WIDTH = 53
 HEIGHT = 20
@@ -54,6 +55,8 @@ class StatsBuilder(object):
         accepted = [ set(range(len(self.item["data"]["iters"]))) ]
         for fil in filters:
             accepted.append(fil(self.item))
+
+        accepted = reduce(lambda x,y : x | y, accepted)
         print(accepted)
         # print(self.item)
         # print(self.item["data"]["iters"])

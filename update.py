@@ -11,7 +11,7 @@ def filt_iter(item):
 def filt_delta(item):
     s = set()
     for i, item in enumerate(item["data"]["delta"]):
-        if item < 0.000035:
+        if item <= 20.42923143809969:
             s |= {i}
     return s
 

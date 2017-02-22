@@ -51,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="438">
-              <caret line="408" column="21" lean-forward="false" selection-start-line="408" selection-start-column="21" selection-end-line="408" selection-end-column="21" />
+              <caret line="408" column="26" lean-forward="false" selection-start-line="408" selection-start-column="26" selection-end-line="408" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -599,7 +599,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487747363580</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="single update">
+      <created>1487747666555</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1487747666555</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -657,7 +664,8 @@
     <MESSAGE value="tqdm&#10;" />
     <MESSAGE value="tqdm last&#10;" />
     <MESSAGE value="single update&#10;filter constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="single update&#10;filter constructor" />
+    <MESSAGE value="single update" />
+    <option name="LAST_COMMIT_MESSAGE" value="single update" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -907,7 +915,7 @@
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="438">
-          <caret line="408" column="21" lean-forward="false" selection-start-line="408" selection-start-column="21" selection-end-line="408" selection-end-column="21" />
+          <caret line="408" column="26" lean-forward="false" selection-start-line="408" selection-start-column="26" selection-end-line="408" selection-end-column="26" />
           <folding />
         </state>
       </provider>

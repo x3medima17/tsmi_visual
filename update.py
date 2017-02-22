@@ -39,7 +39,7 @@ def factory(field:str, min:float , max:float, context:tuple = None):
 if len(sys.argv) == 2:
     plot.StatsBuilder.update(sys.argv[1], [
         # factory("iters", 0, 500),
-        # factory("positions",0,0.002, (0,"k_perm"))
+        factory("positions",0,0.002, (0,"k_perm"))
     ])
 else:
     plot.StatsBuilder.update()

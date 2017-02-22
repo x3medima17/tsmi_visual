@@ -6,6 +6,6 @@ def filt(item):
     return item
 
 if len(sys.argv) == 2:
-    plot.StatsBuilder.update(sys.argv[1])
+    plot.StatsBuilder.update(sys.argv[1], [filt])
 else:
     plot.StatsBuilder.update()

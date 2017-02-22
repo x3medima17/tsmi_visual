@@ -4,7 +4,7 @@ import sys
 def filt(item):
     s = set()
     for i, item in enumerate(item["data"]["iters"]):
-        if  item > 50:
+        if  item > 5:
             s |= {i}
     return s
 

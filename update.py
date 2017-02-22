@@ -22,11 +22,11 @@ def factory(field, min, max, index=None):
     def fil(item):
         s = set()
 
-        enum = enumerate(item["data"][field])
+        enum = item["data"][field]
         if index:
             enum = enum[index]
 
-        for i, item in enum:
+        for i, item in enumerate(enum):
             if min <= item >= max:
                 s |= {i}
         return s

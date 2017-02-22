@@ -68,6 +68,7 @@ class StatsBuilder(object):
                 print(value)
                 print(key)
                 raise ValueError
+            print(key)
             # print(self.item)
             # print(self.item["data"]["iters"])
 

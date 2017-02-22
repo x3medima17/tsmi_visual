@@ -18,7 +18,7 @@ def filt_delta(item):
     return s
 
 
-def factory(field:str, min:int , max:int, context:tuple = None):
+def factory(field:str, min:float , max:float, context:tuple = None):
     #context: <formation, param>
     def fil(item):
         s = set()

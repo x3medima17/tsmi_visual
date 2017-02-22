@@ -154,7 +154,7 @@ class StatsBuilder(object):
         return formations
 
     def plot_paths(self):
-        formations = StatsBuilder.get_formation_dict()
+        formations = StatsBuilder.get_formation_dict(self.item)
 
         figs = []
         item = self.item

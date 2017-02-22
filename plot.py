@@ -190,7 +190,7 @@ class StatsBuilder(object):
         i = 1
         for param in sorted(params):
             value = params[param]
-            for form_index in sorted(value.items()):
+            for form_index in sorted(value):
                 index = value[form_index]
                 ax = plt.subplot(nRows, nCols, i)
                 ax.ticklabel_format(style='sci', axis='y')

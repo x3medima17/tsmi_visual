@@ -66,6 +66,7 @@ class StatsBuilder(object):
                 _, self.item["data"][key] = zip(*zipped)
             except ValueError:
                 print(value)
+                print(zipped)
                 print(key)
                 raise ValueError
             print(key)

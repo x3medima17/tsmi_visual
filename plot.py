@@ -54,6 +54,7 @@ class StatsBuilder(object):
         for fil in filters:
             self.item = fil(self.item)
         print(filters)
+        print(self.item)
         print(self.item["data"]["iters"])
 
 

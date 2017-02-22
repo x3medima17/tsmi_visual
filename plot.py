@@ -58,7 +58,7 @@ class StatsBuilder(object):
             accepted.append(fil(self.item))
 
         accepted = reduce(lambda x,y : x & y, accepted)
-        # print(accepted)
+        print(accepted)
         for key, value in self.item["data"].items():
             zipped = [(i,x) for i,x in enumerate(value) if i in accepted]
             # print(key,"--------------------",zipped)

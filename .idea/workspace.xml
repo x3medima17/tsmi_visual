@@ -50,8 +50,8 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="70" column="21" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+            <state relative-caret-position="506">
+              <caret line="61" column="20" lean-forward="false" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -449,20 +449,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00007" summary="shell true">
-      <created>1487627734586</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1487627734587</updated>
-    </task>
-    <task id="LOCAL-00008" summary="shell true">
-      <created>1487627758310</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1487627758310</updated>
-    </task>
     <task id="LOCAL-00009" summary="syntrax error">
       <created>1487627795200</created>
       <option name="number" value="00009" />
@@ -792,7 +778,21 @@
       <option name="project" value="LOCAL" />
       <updated>1487759154053</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="reduce accepted">
+      <created>1487759388245</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1487759388246</updated>
+    </task>
+    <task id="LOCAL-00057" summary="reduce accepted">
+      <created>1487759438928</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1487759438928</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1111,8 +1111,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="70" column="21" lean-forward="false" selection-start-line="70" selection-start-column="21" selection-end-line="70" selection-end-column="21" />
+        <state relative-caret-position="506">
+          <caret line="61" column="20" lean-forward="false" selection-start-line="61" selection-start-column="20" selection-end-line="61" selection-end-column="20" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

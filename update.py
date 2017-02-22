@@ -18,17 +18,23 @@ def filt_delta(item):
     return s
 
 
-def factory(field, min, max):
+def factory(field, min, max, index=None):
     def fil(item):
         s = set()
-        for i, item in enumerate(item["data"][field]):
-            if item >= min and item <= max:
+
+        enum = enumerate(item["data"][field])
+        if index:
+            enum = enum[index]
+
+        for i, item in enum:
+            if min <= item >= max:
                 s |= {i}
         return s
+
     return fil
 
 
 if len(sys.argv) == 2:
-    plot.StatsBuilder.update(sys.argv[1], [factory("iters", 0,5)])
+    plot.StatsBuilder.update(sys.argv[1], [factory("iters", 0, 5)])
 else:
     plot.StatsBuilder.update()

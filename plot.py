@@ -57,9 +57,7 @@ class StatsBuilder(object):
         for fil in filters:
             accepted.append(fil(self.item))
 
-        pprint(accepted)
         accepted = reduce(lambda x,y : x & y, accepted)
-        print(accepted)
         for key, value in self.item["data"].items():
             if key == "positions":
                 value = list(map(list, zip(*value)))
@@ -78,7 +76,6 @@ class StatsBuilder(object):
                 # print([(i,x) for i,x in enumerate(value)])
                 pprint(out)
                 raise ValueError
-            print(key)
             # print(self.item)
             # print(self.item["data"]["iters"])
 
@@ -437,11 +434,11 @@ class StatsBuilder(object):
 
     @staticmethod
     def update(oid = None, filters=[]):
-        StatsBuilder.reset()
         db, fs = connect()
         if oid:
             lst = list(db.runs.find({"_id" : ObjectId(oid)}))
         else:
+            StatsBuilder.reset()
             lst = list(db.runs.find({}, {"_id": 1}))
 
         for item in tqdm.tqdm(lst):

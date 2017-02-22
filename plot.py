@@ -476,7 +476,6 @@ def build_stats(oid):
 if __name__ == "__main__":
 
 	lst = list(db.runs.find())
-	print len(lst)
 	i = 0
 	for item in lst:
 		i+=1

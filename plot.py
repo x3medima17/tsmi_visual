@@ -51,11 +51,12 @@ class StatsBuilder(object):
         self.figures = dict()
 
         # applying filters
+        accepted = list(range(len(item["data"]["iters"])))
         for fil in filters:
-            self.item = fil(self.item)
-        print(filters)
-        print(self.item)
-        print(self.item["data"]["iters"])
+            accepted &= fil(self.item)
+        print(accepted)
+        # print(self.item)
+        # print(self.item["data"]["iters"])
 
 
     def plot_main(self):

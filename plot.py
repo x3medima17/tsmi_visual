@@ -53,6 +53,8 @@ class StatsBuilder(object):
         # applying filters
         for fil in filters:
             self.item = fil[0](self.item)
+        print(filters)
+        print(self.item["data"]["iters"])
 
 
     def plot_main(self):

@@ -39,8 +39,8 @@
       <file leaf-file-name="update.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/update.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="110">
+              <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -51,9 +51,11 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="377" column="17" lean-forward="true" selection-start-line="377" selection-start-column="17" selection-end-line="377" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="680">
+              <caret line="54" column="41" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -88,6 +90,7 @@
       <find>sys.ex</find>
       <find>update</find>
       <find>if oid</find>
+      <find>update(</find>
     </findStrings>
     <replaceStrings>
       <replace>items</replace>
@@ -104,8 +107,8 @@
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/post.py" />
-        <option value="$PROJECT_DIR$/update.py" />
         <option value="$PROJECT_DIR$/plot.py" />
+        <option value="$PROJECT_DIR$/update.py" />
       </list>
     </option>
   </component>
@@ -622,7 +625,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487747756748</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="iters on X">
+      <created>1487749122468</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1487749122468</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -681,7 +691,8 @@
     <MESSAGE value="tqdm last&#10;" />
     <MESSAGE value="single update&#10;filter constructor" />
     <MESSAGE value="single update" />
-    <option name="LAST_COMMIT_MESSAGE" value="single update" />
+    <MESSAGE value="iters on X" />
+    <option name="LAST_COMMIT_MESSAGE" value="iters on X" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -712,7 +723,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -766,7 +779,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -920,8 +935,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/update.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="110">
+          <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
@@ -930,9 +945,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="946">
-          <caret line="377" column="17" lean-forward="true" selection-start-line="377" selection-start-column="17" selection-end-line="377" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="680">
+          <caret line="54" column="41" lean-forward="false" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

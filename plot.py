@@ -1,3 +1,5 @@
+from functools import reduce
+
 import matplotlib as mpl
 
 mpl.use('Agg')
@@ -37,7 +39,7 @@ def connect():
 class StatsBuilder(object):
     def __init__(self, id, filters=[]):
         """
-        filters [ (get_field_function(item), function) ]
+        filters [ (function) ]
         """
         self.db, self.fs = connect()
         self.id = id
@@ -50,7 +52,7 @@ class StatsBuilder(object):
 
         # applying filters
         for fil in filters:
-            self.item[fil[0](self.item)]  = filter(fil[0], self.item)
+            self.item = fil[0](self.item)
 
 
     def plot_main(self):
@@ -405,7 +407,7 @@ class StatsBuilder(object):
         db['fs.files'].remove({})
 
     @staticmethod
-    def update(oid = None):
+    def update(oid = None, filters=[]):
         StatsBuilder.reset()
         db, fs = connect()
         if oid:
@@ -414,14 +416,14 @@ class StatsBuilder(object):
             lst = list(db.runs.find({}, {"_id": 1}))
 
         for item in tqdm.tqdm(lst):
-            p = mp.Process(target=StatsBuilder.worker, args=(item["_id"],))
+            p = mp.Process(target=StatsBuilder.worker, args=(item["_id"], filters,))
             p.start()
             p.join()
 
     @staticmethod
-    def worker(oid):
+    def worker(oid, filters):
         db, fs = connect()
-        obj = StatsBuilder(oid)
+        obj = StatsBuilder(oid, filters)
         obj.plot_all()
         obj.insert()
 

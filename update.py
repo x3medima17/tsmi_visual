@@ -3,9 +3,9 @@ import sys
 
 def filt(item):
     s = set(item["data"]["iters"])
-    for i, item in item["data"]["iters"]:
+    for i, item in enumerate(item["data"]["iters"]):
         if not (item>50):
-            s -= {item}
+            s -= {i}
     return s
 
 if len(sys.argv) == 2:

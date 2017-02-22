@@ -37,7 +37,7 @@ def connect():
 class StatsBuilder(object):
     def __init__(self, id, filters=[]):
         """
-        filters [ ("field_name", function) ]
+        filters [ (get_field_function(item), function) ]
         """
         self.db, self.fs = connect()
         self.id = id
@@ -49,8 +49,9 @@ class StatsBuilder(object):
         self.figures = dict()
 
         # applying filters
-        for item in filters:
-            self.item["data"][item[0]] = filter(item[1], self.item["data"][item[0]])
+        for fil in filters:
+            self.item[fil[0](self.item)]  = filter(fil[0], self.item)
+
 
     def plot_main(self):
 
@@ -60,7 +61,8 @@ class StatsBuilder(object):
         fig.canvas.set_window_title("Main")
 
         ax = plt.subplot(121)
-        ax.plot(range(1, len(deltas) + 1), deltas)
+        iters = self.item["data"]["iters"]
+        ax.plot(iters, deltas)
 
         ax.set_xlabel("Iteration")
         ax.set_ylabel("Value")
@@ -160,7 +162,9 @@ class StatsBuilder(object):
             for form_index, index in value.items():
                 ax = plt.subplot(nRows, nCols, i)
                 ax.ticklabel_format(style='sci', axis='y')
-                x = range(len(item["data"]["positions"][index]))
+
+                x = self.item["data"]["iters"]
+
                 y = item["data"]["positions"][index]
                 ax.plot(x, y)
                 ax.set_title("{}{}".format(param[0], form_index + 1))
@@ -330,7 +334,7 @@ class StatsBuilder(object):
         fig = plt.figure()
         ax = plt.subplot(111)
         data = self.item["data"][field]
-        plt.plot(range(1, len(data) + 1), data)
+        plt.plot(self.item["data"]["iters"], data)
         ax.set_xlabel("Iteration")
         ax.set_ylabel(field)
 
@@ -406,7 +410,6 @@ class StatsBuilder(object):
         db, fs = connect()
         if oid:
             lst = list(db.runs.find({"_id" : ObjectId(oid)}))
-            print(lst, oid)
         else:
             lst = list(db.runs.find({}, {"_id": 1}))
 

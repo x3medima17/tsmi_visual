@@ -29,7 +29,7 @@ def factory(field:str, min:float , max:float, context:tuple = None):
             enum = enum[info[context[0]][context[1]]]
 
         for i, item in enumerate(enum):
-            if min <= item >= max:
+            if item >= min and  item <= max:
                 s |= {i}
         return s
 

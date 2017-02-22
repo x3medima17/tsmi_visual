@@ -191,7 +191,7 @@ class StatsBuilder(object):
         i = 1
         for param, value in params.items():
             for form_index, index in value.items():
-                ax = plt.subplot(nRows, nCols, i)
+                ax = plt.subplot(nRows, nCols, i, marker='o')
                 ax.ticklabel_format(style='sci', axis='y')
 
                 x = self.item["data"]["iters"]

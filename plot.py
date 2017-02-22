@@ -75,7 +75,7 @@ class StatsBuilder(object):
                 print(zipped)
                 print(key)
                 print([(i,x) for i,x in enumerate(value)])
-                raise ValueError
+                # raise ValueError
             print(key)
             # print(self.item)
             # print(self.item["data"]["iters"])

@@ -421,7 +421,7 @@ if __name__ == "__main__":
     db, fs = connect()
     lst = list(db.runs.find())
     i = 0
-    for item in tqdm(lst):
+    for item in tqdm.tqdm(lst):
         i += 1
         oid = str(item["_id"])
         try:

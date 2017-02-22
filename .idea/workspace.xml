@@ -579,7 +579,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487744937458</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="tqdm&#10;">
+      <created>1487745367231</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1487745367231</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -634,7 +641,8 @@
     <MESSAGE value="mlp X display" />
     <MESSAGE value="iteritems() to items()" />
     <MESSAGE value="list keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="list keys" />
+    <MESSAGE value="tqdm&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="tqdm&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

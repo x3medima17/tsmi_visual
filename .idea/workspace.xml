@@ -48,8 +48,8 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="221" column="0" lean-forward="true" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+            <state relative-caret-position="329">
+              <caret line="423" column="25" lean-forward="false" selection-start-line="423" selection-start-column="25" selection-end-line="423" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -101,6 +101,7 @@
       <find>hist</find>
       <find>deltas</find>
       <find>iteritems</find>
+      <find>print(</find>
     </findStrings>
     <replaceStrings>
       <replace>items</replace>
@@ -571,7 +572,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487744741270</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="list keys">
+      <created>1487744937458</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1487744937458</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -625,7 +633,8 @@
     <MESSAGE value="py3 migrantion&#10;" />
     <MESSAGE value="mlp X display" />
     <MESSAGE value="iteritems() to items()" />
-    <option name="LAST_COMMIT_MESSAGE" value="iteritems() to items()" />
+    <MESSAGE value="list keys" />
+    <option name="LAST_COMMIT_MESSAGE" value="list keys" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -868,8 +877,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="221" column="0" lean-forward="true" selection-start-line="221" selection-start-column="0" selection-end-line="221" selection-end-column="0" />
+        <state relative-caret-position="329">
+          <caret line="423" column="25" lean-forward="false" selection-start-line="423" selection-start-column="25" selection-end-line="423" selection-end-column="25" />
           <folding />
         </state>
       </provider>

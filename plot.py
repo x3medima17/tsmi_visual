@@ -51,9 +51,9 @@ class StatsBuilder(object):
         self.figures = dict()
 
         # applying filters
-        accepted = list(range(len(self.item["data"]["iters"])))
+        accepted = [ set(range(len(self.item["data"]["iters"]))) ]
         for fil in filters:
-            accepted &= fil(self.item)
+            accepted.append(fil(self.item))
         print(accepted)
         # print(self.item)
         # print(self.item["data"]["iters"])

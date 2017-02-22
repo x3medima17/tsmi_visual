@@ -38,8 +38,8 @@
       <file leaf-file-name="update.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/update.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
-              <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            <state relative-caret-position="566">
+              <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -455,13 +455,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00038" summary="filter manual">
-      <created>1487756266388</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1487756266388</updated>
-    </task>
     <task id="LOCAL-00039" summary="filter manual">
       <created>1487756324874</created>
       <option name="number" value="00039" />
@@ -798,7 +791,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487767050263</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="no filter">
+      <created>1487767647468</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1487767647468</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -863,9 +863,9 @@
     <MESSAGE value="enum" />
     <MESSAGE value="positions filter" />
     <MESSAGE value="marker&#10;" />
-    <MESSAGE value="no filter" />
     <MESSAGE value="sorted dict" />
-    <option name="LAST_COMMIT_MESSAGE" value="sorted dict" />
+    <MESSAGE value="no filter" />
+    <option name="LAST_COMMIT_MESSAGE" value="no filter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1118,8 +1118,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/update.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
-          <caret line="42" column="6" lean-forward="true" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        <state relative-caret-position="566">
+          <caret line="41" column="35" lean-forward="false" selection-start-line="41" selection-start-column="35" selection-end-line="41" selection-end-column="35" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

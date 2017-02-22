@@ -191,13 +191,13 @@ class StatsBuilder(object):
         i = 1
         for param, value in params.items():
             for form_index, index in value.items():
-                ax = plt.subplot(nRows, nCols, i, marker='o')
+                ax = plt.subplot(nRows, nCols, i)
                 ax.ticklabel_format(style='sci', axis='y')
 
                 x = self.item["data"]["iters"]
 
                 y = item["data"]["positions"][index]
-                ax.plot(x, y)
+                ax.plot(x, y, marker='o')
                 ax.set_title("{}{}".format(param[0], form_index + 1))
 
                 ax.grid(True)

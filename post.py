@@ -15,4 +15,4 @@ url = 'http://localhost:8080'
 #print(data)
 r = requests.post(url, data=json.dumps(data))
 
-print r.content
+print(r.content)

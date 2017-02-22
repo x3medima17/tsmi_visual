@@ -35,7 +35,10 @@ def connect():
 
 
 class StatsBuilder(object):
-    def __init__(self, id):
+    def __init__(self, id, filters=[]):
+        """
+        filters [ ("field_name", function) ]
+        """
         self.db, self.fs = connect()
         self.id = id
         self.oid = ObjectId(id)
@@ -44,6 +47,10 @@ class StatsBuilder(object):
             print("Fetch failed")
 
         self.figures = dict()
+
+        # applying filters
+        for item in filters:
+            self.item["data"][item[0]] = filter(item[1], self.item["data"][item[0]])
 
     def plot_main(self):
 
@@ -197,7 +204,7 @@ class StatsBuilder(object):
 
         figs = []
         item = self.item
-        nRows, nCols = self.factorize2(len(formations.keys()))
+        nRows, nCols = self.factorize2(len(list(formations.keys())))
         fig = plt.figure(figsize=(WIDTH, HEIGHT / 2))
         i = 1
         for key, value in formations.items():
@@ -372,7 +379,7 @@ class StatsBuilder(object):
                 item.savefig(fname)
                 item.clf()
                 hx = ":".join("{:02x}".format(ord(c)) for c in fname)
-            # print(hx)
+                # print(hx)
         # figs["main"].savefig("/tmp/main.png")
 
 
@@ -394,10 +401,14 @@ class StatsBuilder(object):
         db['fs.files'].remove({})
 
     @staticmethod
-    def update():
+    def update(oid = None):
         StatsBuilder.reset()
         db, fs = connect()
-        lst = list(db.runs.find({}, {"_id": 1}))
+        if oid:
+            lst = list(db.runs.find({"_id" : oid}))
+        else:
+            lst = list(db.runs.find({}, {"_id": 1}))
+
         for item in tqdm.tqdm(lst):
             p = mp.Process(target=StatsBuilder.worker, args=(item["_id"],))
             p.start()
@@ -429,21 +440,3 @@ if __name__ == "__main__":
             obj.insert()
         except:
             print("Failed")
-
-    # info = obj.item["meta"]["param_info"]
-
-    # print(info)
-    # obj.plot_main()
-    # obj.plot_positions_hists()
-    # obj.plot_paths()
-    # obj.plot_freq()
-
-    # obj.plot_accepted_stats()
-
-    # obj.plot_field_line("delta")
-    # obj.plot_field_hist("acceptance_probability")
-    # obj.plot_field_hist("random_probability")
-    # obj.show()
-
-    sys.exit()
-# build_stats("5876b835f74786316bd909d9")

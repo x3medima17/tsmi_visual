@@ -92,7 +92,7 @@ class StatsBuilder(object):
 
         ax = plt.subplot(121)
         iters = self.item["data"]["iters"]
-        ax.plot(iters, deltas)
+        ax.plot(iters, deltas, makevery=iters)
 
         ax.set_xlabel("Iteration")
         ax.set_ylabel("Value")

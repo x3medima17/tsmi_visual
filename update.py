@@ -5,7 +5,7 @@ def filt(item):
     s = set()
     for i, item in enumerate(item["data"]["iters"]):
         if  item < 50:
-            s += {i}
+            s |= {i}
     return s
 
 if len(sys.argv) == 2:

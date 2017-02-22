@@ -405,7 +405,7 @@ class StatsBuilder(object):
         StatsBuilder.reset()
         db, fs = connect()
         if oid:
-            lst = list(db.runs.find({"_id" : oid}))
+            lst = list(db.runs.find({"_id" : ObjectId(oid)}))
             print(lst, oid)
         else:
             lst = list(db.runs.find({}, {"_id": 1}))

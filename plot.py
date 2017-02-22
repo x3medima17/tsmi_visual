@@ -131,8 +131,8 @@ class StatsBuilder(object):
 			ax.grid(True)
 
 
-			ax.set_xlabel("{}{}".format(value.keys()[0][0], key+1))
-			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
+			ax.set_xlabel("{}{}".format(list(value.keys())[0][0], key+1))
+			ax.set_ylabel("{}{}".format(list(value.keys())[1][0], key+1))
 			plt.xticks(rotation=70)
 			plt.yticks(rotation=70)
 		#plt.set_fontsize(20)
@@ -207,8 +207,8 @@ class StatsBuilder(object):
 		i = 1
 		for key, value in formations.items():
 			ax = fig.add_subplot(nRows, nCols, i)
-			x = item["data"]["positions"][value[value.keys()[0]]]
-			y = item["data"]["positions"][value[value.keys()[1]]]
+			x = item["data"]["positions"][value[list(value.keys())[0]]]
+			y = item["data"]["positions"][value[list(value.keys())[1]]]
 
 			plt.hist2d(x, y, bins=bins, norm=LogNorm())
 			plt.colorbar()
@@ -217,8 +217,8 @@ class StatsBuilder(object):
 			#fig.canvas.set_window_title('Formation {} frequency'.format(key+1))
 			ax.grid(True)
 
-			ax.set_xlabel("{}{}".format(value.keys()[0][0], key+1))
-			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
+			ax.set_xlabel("{}{}".format(list(value.keys())[0][0], key+1))
+			ax.set_ylabel("{}{}".format(list(value.keys())[1][0], key+1))
 
 			ax = self.set_fontsize(ax, 18)
 			plt.xticks(rotation=50)
@@ -354,7 +354,7 @@ class StatsBuilder(object):
 
 
 	def show(self):
-		plt.show();
+		plt.show()
 
 	def insert(self):
 		figs = self.figures
@@ -422,55 +422,6 @@ class StatsBuilder(object):
 	def __del__(self):
 		plt.close()
 		gc.collect()
-
-def build_stats(oid):
-
-
-
-
-	# plt.figure()
-	# ax = fig.add_subplot(111)
-
-	# fig, (ax1, ax2) = plt.subplots(1,2)
-
-	# line1,  = ax1.plot(x1,y1, "ro")
-	# line2,  = ax2.plot(x2,y2, "bo")
-	# line = [line1, line2]
-
-	# ax1.grid(True)
-	# ax2.grid(True)
-
-	# def animate(i):
-	# 	x = x1[:i]
-	# 	y = y1[:i]
-	# 	line[0].set_data(x, y)
-	# 	x = x2[:i]
-	# 	y = y2[:i]
-	# 	line[1].set_data(x, y)
-
-	# 	return line
-
-	# # Init only required for blitting to give a clean slate.
-	# def init():
-	# 	# print(len(x1))
-	# 	line[0].set_data(np.ma.array([x1, y1], mask=True))
-	# 	line[1].set_data(np.ma.array([x2, y2], mask=True))
-	# 	return line
-
-	# ani = animation.FuncAnimation(fig, animate, np.arange(0, len(y1)), init_func=init,
-	#                               interval=10, blit=True, repeat=False)
-
-
-
-	shutil.make_archive("/tmp/tsmi/out".format(path), 'zip', path)
-	zip = open("/tmp/tsmi/out.zip", "rb").read()
-	with fs.new_file(filename="{}.zip".format(oid)) as fb:
-		fb.write(zip)
-
-	plt.clf()
-	shutil.rmtree(path)
-	os.remove("/tmp/tsmi/out.zip")
-	# plt.show()
 
 
 if __name__ == "__main__":

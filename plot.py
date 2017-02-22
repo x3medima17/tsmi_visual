@@ -39,7 +39,7 @@ def connect():
 
 class StatsBuilder(object):
     def __init__(self, id, filters=[]):
-        print("STATSBUILDER")
+
         """
         filters [ (function) ]
         """
@@ -61,7 +61,7 @@ class StatsBuilder(object):
         # print(accepted)
         for key, value in self.item["data"].items():
             zipped = [(i,x) for i,x in enumerate(value) if i in accepted]
-            # print("--------------------",zipped)
+            print(key,"--------------------",zipped)
             _, self.item["data"][key] = zip(*zipped)
             # print(self.item)
             # print(self.item["data"]["iters"])

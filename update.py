@@ -18,13 +18,15 @@ def filt_delta(item):
     return s
 
 
-def factory(field, min, max, index=None):
+def factory(field:str, min:int , max:int, context:tuple):
+    #context: <formation, param>
     def fil(item):
         s = set()
 
         enum = item["data"][field]
-        if index:
-            enum = enum[index]
+        if context:
+            info = plot.StatsBuilder.get_formation_dict(item)
+            enum = enum[info[context[0]][context[1]]]
 
         for i, item in enumerate(enum):
             if min <= item >= max:
@@ -35,6 +37,9 @@ def factory(field, min, max, index=None):
 
 
 if len(sys.argv) == 2:
-    plot.StatsBuilder.update(sys.argv[1], [factory("iters", 0, 5)])
+    plot.StatsBuilder.update(sys.argv[1], [
+        factory("iters", 0, 500),
+        factory("positions",0,0.002, (0,"k_perm"))
+    ])
 else:
     plot.StatsBuilder.update()

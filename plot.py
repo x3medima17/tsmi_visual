@@ -111,7 +111,8 @@ class StatsBuilder(object):
 
     # plt.savefig("{}/main.png".format(path))
 
-    def get_param_dict(self):
+    @staticmethod
+    def get_param_dict(item):
         """
             Example
             {
@@ -124,7 +125,7 @@ class StatsBuilder(object):
             }
         """
         params = {}
-        info = self.item["meta"]["param_info"]
+        info = item["meta"]["param_info"]
         for i, item in enumerate(info):
             if not item[1] in params.keys():
                 params[item[1]] = {}
@@ -132,7 +133,8 @@ class StatsBuilder(object):
         return params
 
 
-    def get_formation_dict(self):
+    @staticmethod
+    def get_formation_dict(item):
         """
             Example
             {
@@ -143,7 +145,7 @@ class StatsBuilder(object):
             }
         """
         formations = {}
-        info = self.item["meta"]["param_info"]
+        info = item["meta"]["param_info"]
 
         for i, item in enumerate(info):
             if not item[0] in formations.keys():
@@ -152,7 +154,7 @@ class StatsBuilder(object):
         return formations
 
     def plot_paths(self):
-        formations = self.get_formation_dict()
+        formations = StatsBuilder.get_formation_dict()
 
         figs = []
         item = self.item
@@ -181,7 +183,7 @@ class StatsBuilder(object):
     def plot_positions(self):
         figs = []
         item = self.item
-        params = self.get_param_dict()
+        params = StatsBuilder.get_param_dict(item)
         nRows = len(params.keys())
         nCols = max([len(x) for x in params.values()])
         fig = plt.figure()
@@ -232,7 +234,7 @@ class StatsBuilder(object):
 
     def plot_freq(self, bins=10):
 
-        formations = self.get_formation_dict()
+        formations = StatsBuilder.get_formation_dict(self.item)
 
         figs = []
         item = self.item

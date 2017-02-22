@@ -52,7 +52,7 @@ class StatsBuilder(object):
 
         # applying filters
         for fil in filters:
-            self.item = fil[0](self.item)
+            self.item = fil(self.item)
         print(filters)
         print(self.item["data"]["iters"])
 

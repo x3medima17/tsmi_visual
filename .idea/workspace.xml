@@ -48,8 +48,8 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="409" column="29" lean-forward="true" selection-start-line="409" selection-start-column="29" selection-end-line="409" selection-end-column="29" />
+            <state relative-caret-position="320">
+              <caret line="359" column="12" lean-forward="false" selection-start-line="359" selection-start-column="12" selection-end-line="359" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -102,6 +102,7 @@
       <find>deltas</find>
       <find>iteritems</find>
       <find>print(</find>
+      <find>sys.ex</find>
     </findStrings>
     <replaceStrings>
       <replace>items</replace>
@@ -593,7 +594,14 @@
       <option name="project" value="LOCAL" />
       <updated>1487745484070</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="tqdm&#10;">
+      <created>1487745611471</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1487745611471</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -892,8 +900,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="409" column="29" lean-forward="true" selection-start-line="409" selection-start-column="29" selection-end-line="409" selection-end-column="29" />
+        <state relative-caret-position="320">
+          <caret line="359" column="12" lean-forward="false" selection-start-line="359" selection-start-column="12" selection-end-line="359" selection-end-column="12" />
           <folding />
         </state>
       </provider>

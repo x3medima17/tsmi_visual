@@ -357,7 +357,6 @@ class StatsBuilder(object):
         try:
             shutil.rmtree(path)
         except:
-            print(sys.exc_info()[0])
             pass
 
         os.makedirs(self.path)

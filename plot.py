@@ -56,7 +56,7 @@ class StatsBuilder(object):
         for fil in filters:
             accepted.append(fil(self.item))
 
-        accepted = reduce(lambda x,y : x | y, accepted)
+        accepted = reduce(lambda x,y : x & y, accepted)
         print(accepted)
         # print(self.item)
         # print(self.item["data"]["iters"])

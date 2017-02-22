@@ -406,6 +406,7 @@ class StatsBuilder(object):
         db, fs = connect()
         if oid:
             lst = list(db.runs.find({"_id" : oid}))
+            print(lst)
         else:
             lst = list(db.runs.find({}, {"_id": 1}))
 

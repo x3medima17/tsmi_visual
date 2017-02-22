@@ -44,7 +44,7 @@ class StatsBuilder(object):
 
 		self.figures = dict()
 
-	def plot_main(self):	
+	def plot_main(self):
 
 		deltas = self.item["data"]["delta"]
 
@@ -53,7 +53,7 @@ class StatsBuilder(object):
 
 		ax = plt.subplot(121)
 		ax.plot(range(1,len(deltas)+1), deltas)
-		
+
 		ax.set_xlabel("Iteration")
 		ax.set_ylabel("Value")
 		ax.set_yscale('linear')
@@ -72,7 +72,7 @@ class StatsBuilder(object):
 		plt.tight_layout()
 
 		self.figures["main"] = [fig]
-		# plt.savefig("{}/main.png".format(path))       
+		# plt.savefig("{}/main.png".format(path))
 
 	def get_param_dict(self):
 		"""
@@ -95,7 +95,7 @@ class StatsBuilder(object):
 		return params
 
 	def get_formation_dict(self):
-		""" 
+		"""
 			Example
 			{ 
 				'1' : {
@@ -119,9 +119,9 @@ class StatsBuilder(object):
 		figs = []
 		item = self.item
 		nRows, nCols = self.factorize2(len(formations.keys()))
-		fig = plt.figure(figsize=(WIDTH, HEIGHT/2)) 
-		i = 0	
-		for key, value in formations.iteritems():
+		fig = plt.figure(figsize=(WIDTH, HEIGHT/2))
+		i = 0
+		for key, value in formations.items():
 			i += 1
 			ax = fig.add_subplot(nRows, nCols, i)
 			x = item["data"]["positions"][value["k_perm"]]
@@ -135,10 +135,10 @@ class StatsBuilder(object):
 			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
 			plt.xticks(rotation=70)
 			plt.yticks(rotation=70)
-		#plt.set_fontsize(20)	
+		#plt.set_fontsize(20)
 		plt.tight_layout()
 		figs.append(fig)
-    
+
 		self.figures["paths"] = figs
 
 
@@ -150,8 +150,8 @@ class StatsBuilder(object):
 		nCols = max([len(x) for x in params.values()])
 		fig = plt.figure()
 		i = 1
-		for param, value  in params.iteritems():
-			for form_index, index in value.iteritems():
+		for param, value  in params.items():
+			for form_index, index in value.items():
 				ax = plt.subplot(nRows,nCols,i)
 				ax.ticklabel_format(style='sci', axis='y')
 				x = range(len(item["data"]["positions"][index]))
@@ -173,8 +173,8 @@ class StatsBuilder(object):
 		self.figures["positions"] = figs
 		figh = plt.figure()
 		i = 1
-		for param, value in params.iteritems():
-			for form_index, index in value.iteritems():
+		for param, value in params.items():
+			for form_index, index in value.items():
 				ax = plt.subplot(nRows, nCols, i)
 				# ax.ticklabel_format(st)
 				vals = item["data"]["positions"][index]
@@ -196,16 +196,16 @@ class StatsBuilder(object):
 
 
 
-	def plot_freq(self, bins=10):	
+	def plot_freq(self, bins=10):
 
 		formations = self.get_formation_dict()
 
 		figs = []
 		item = self.item
-		nRows, nCols = self.factorize2(len(formations.keys()))	
+		nRows, nCols = self.factorize2(len(formations.keys()))
 		fig = plt.figure(figsize=(WIDTH, HEIGHT/2))
 		i = 1
-		for key, value in formations.iteritems():
+		for key, value in formations.items():
 			ax = fig.add_subplot(nRows, nCols, i)
 			x = item["data"]["positions"][value[value.keys()[0]]]
 			y = item["data"]["positions"][value[value.keys()[1]]]
@@ -219,10 +219,10 @@ class StatsBuilder(object):
 
 			ax.set_xlabel("{}{}".format(value.keys()[0][0], key+1))
 			ax.set_ylabel("{}{}".format(value.keys()[1][0], key+1))
-		
-			ax = self.set_fontsize(ax, 18)	
-			plt.xticks(rotation=50) 
-			plt.yticks(rotation=50) 
+
+			ax = self.set_fontsize(ax, 18)
+			plt.xticks(rotation=50)
+			plt.yticks(rotation=50)
 			i += 1
 
 		plt.tight_layout()
@@ -247,14 +247,14 @@ class StatsBuilder(object):
 				count_accepted[i] = 0
 			if i not in count_dropped.keys():
 				count_dropped[i] = 0
-				
+
 		accepted = count_accepted.values()
 		pprint(count_accepted)
 		ind = np.arange(N)  # the x locations for the groups
 		width = 0.35       # the width of the bars
 
 		fig, ax = plt.subplots()
-		
+
 		rects1 = ax.bar(ind, accepted, width, color='y')
 
 		dropped = count_dropped.values()
@@ -289,9 +289,9 @@ class StatsBuilder(object):
 		autolabel(rects2)
 
 		self.figures["accepted_stats"] = [fig]
-		# sys.exit() 
-		# plt.savefig("{}/accepted.png".format(path))       
-	
+		# sys.exit()
+		# plt.savefig("{}/accepted.png".format(path))
+
 	@staticmethod
 	def set_fontsize(ax, size):
 		for label in (ax.get_xticklabels() + ax.get_yticklabels()):
@@ -304,7 +304,7 @@ class StatsBuilder(object):
 		for i in range(1,int(np.sqrt(n)+1)):
 			if n%i == 0 and (i - n/i)**2 < (sol[0] - sol[1])**2:
 				sol = [i, n/i]
-		return sol 
+		return sol
 
 	def plot_positions_hists(self):
 		N = len(self.item["data"]["positions"])
@@ -371,18 +371,18 @@ class StatsBuilder(object):
 		os.makedirs(self.path)
 		pprint(figs)
 		dtime = self.item["meta"]["time"]
-		for key, value in figs.iteritems():
+		for key, value in figs.items():
 			for i,item in enumerate(value):
 				if len(value) > 1:
 					fname = "{}/{}{}_{}.png".format(path,key,i, dtime)
 				else:
 					fname = "{}/{}_{}.png".format(path,key, dtime)
 				fname = fname.replace(":","-")
-				item.savefig(fname)	
+				item.savefig(fname)
 				item.clf()
 				hx = ":".join("{:02x}".format(ord(c)) for c in fname)
 				#print(hx)
-		# figs["main"].savefig("/tmp/main.png")       
+		# figs["main"].savefig("/tmp/main.png")
 
 
 		shutil.make_archive("/tmp/tsmi/out{}".format(self.id), 'zip', path)
@@ -393,7 +393,7 @@ class StatsBuilder(object):
 		plt.clf()
 		shutil.rmtree(path)
 		os.remove("/tmp/tsmi/out{}.zip".format(self.id))
-	
+
 	@staticmethod
 	def reset():
 		#fs.chunks.remove({})
@@ -418,13 +418,13 @@ class StatsBuilder(object):
 		print(oid)
 		obj.plot_all()
 		obj.insert()
-	
+
 	def __del__(self):
 		plt.close()
-		gc.collect()	
+		gc.collect()
 
 def build_stats(oid):
-	
+
 
 
 
@@ -461,7 +461,7 @@ def build_stats(oid):
 	#                               interval=10, blit=True, repeat=False)
 
 
-	
+
 	shutil.make_archive("/tmp/tsmi/out".format(path), 'zip', path)
 	zip = open("/tmp/tsmi/out.zip", "rb").read()
 	with fs.new_file(filename="{}.zip".format(oid)) as fb:
@@ -472,7 +472,7 @@ def build_stats(oid):
 	os.remove("/tmp/tsmi/out.zip")
 	# plt.show()
 
-	
+
 if __name__ == "__main__":
 
 	lst = list(db.runs.find())
@@ -487,7 +487,7 @@ if __name__ == "__main__":
 			obj.insert()
 		except:
 			print("Failed")
-		
+
 	# info = obj.item["meta"]["param_info"]
 
 	# print(info)
@@ -505,4 +505,4 @@ if __name__ == "__main__":
 
 	sys.exit()
 	# build_stats("5876b835f74786316bd909d9")
-	
+

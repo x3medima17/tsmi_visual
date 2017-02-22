@@ -147,7 +147,7 @@ class MainHandler(tornado.web.RequestHandler):
             if not item in data.keys():
                 raise Exception("%s missing" % item)
         m = len(data["S0"])
-        for key, value in data.iteritems():
+        for key, value in data.items():
             if key == "positions":
                 for item in value:
                     if len(item) != m:

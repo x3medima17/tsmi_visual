@@ -58,7 +58,7 @@ class StatsBuilder(object):
 
         accepted = reduce(lambda x,y : x & y, accepted)
         for key, value in self.item["data"].items():
-            _, self.item["data"][key] = zip(*[(i,x) for i,x in enumerate(self.item["data"][key]) if i in accepted])
+            _, self.item["data"][key] = zip(*[(i,x) for i,x in enumerate(value)])
         print(accepted)
         # print(self.item)
         # print(self.item["data"]["iters"])

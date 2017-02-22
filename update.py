@@ -2,10 +2,10 @@ import plot
 import sys
 
 def filt(item):
-    s = set(item["data"]["iters"])
+    s = set()
     for i, item in enumerate(item["data"]["iters"]):
-        if not (item>50):
-            s -= {i}
+        if  item < 50:
+            s += {i}
     return s
 
 if len(sys.argv) == 2:

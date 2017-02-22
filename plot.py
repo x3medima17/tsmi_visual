@@ -60,10 +60,16 @@ class StatsBuilder(object):
         accepted = reduce(lambda x,y : x & y, accepted)
         print(accepted)
         for key, value in self.item["data"].items():
+            if key == "positions":
+                value = list(map(list, zip(*value)))
+
             zipped = [(i,x) for i,x in enumerate(value) if i in accepted]
             # print(key,"--------------------",zipped)
             try:
-                _, self.item["data"][key] = zip(*zipped)
+                if key == "positions":
+                    r = zip(*zipped)
+                    r = list(map(list, zip(*r)))
+                _, self.item["data"][key] = r
             except ValueError:
                 print(value)
                 print(zipped)

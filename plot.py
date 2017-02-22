@@ -64,12 +64,12 @@ class StatsBuilder(object):
                 value = list(map(list, zip(*value)))
 
             zipped = [(i,x) for i,x in enumerate(value) if i in accepted]
+            out = zip(*zipped)
             # print(key,"--------------------",zipped)
             try:
                 if key == "positions":
-                    r = zip(*zipped)
-                    r = list(map(list, zip(*r)))
-                _, self.item["data"][key] = r
+                    out = list(map(list, zip(*r)))
+                _, self.item["data"][key] = out
             except ValueError:
                 print(value)
                 print(zipped)

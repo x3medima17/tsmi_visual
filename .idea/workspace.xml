@@ -50,10 +50,11 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="70" column="57" lean-forward="false" selection-start-line="70" selection-start-column="57" selection-end-line="70" selection-end-column="57" />
+            <state relative-caret-position="726">
+              <caret line="71" column="47" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+                <marker date="1487759848292" expanded="true" signature="1625:1762" ph="..." />
               </folding>
             </state>
           </provider>
@@ -449,20 +450,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00011" summary="hists&#10;">
-      <created>1487628802868</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1487628802868</updated>
-    </task>
-    <task id="LOCAL-00012" summary="hists apart&#10;">
-      <created>1487629024081</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1487629024081</updated>
-    </task>
     <task id="LOCAL-00013" summary="hists rotation&#10;">
       <created>1487629134480</created>
       <option name="number" value="00013" />
@@ -792,7 +779,21 @@
       <option name="project" value="LOCAL" />
       <updated>1487759506994</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="reduce accepted">
+      <created>1487759623500</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1487759623500</updated>
+    </task>
+    <task id="LOCAL-00061" summary="reduce accepted">
+      <created>1487759802482</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1487759802482</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -891,6 +892,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+            <marker date="1487759848292" expanded="true" signature="1625:1762" ph="..." />
           </folding>
         </state>
       </provider>
@@ -947,6 +949,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+            <marker date="1487759848292" expanded="true" signature="1625:1762" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1111,10 +1114,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="70" column="57" lean-forward="false" selection-start-line="70" selection-start-column="57" selection-end-line="70" selection-end-column="57" />
+        <state relative-caret-position="726">
+          <caret line="71" column="47" lean-forward="false" selection-start-line="71" selection-start-column="47" selection-end-line="71" selection-end-column="47" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
+            <marker date="1487759848292" expanded="true" signature="1625:1762" ph="..." />
           </folding>
         </state>
       </provider>

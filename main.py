@@ -153,7 +153,7 @@ class MainHandler(tornado.web.RequestHandler):
 
     def post(self):
         # print(self.request.body)
-        req = json.loads(self.request.body)
+        req = json.loads(self.request.body.decode("utf-8"))
         data = req["data"]
         meta = req["meta"]
 

@@ -391,7 +391,7 @@ class StatsBuilder(object):
     def show(self):
         plt.show()
 
-    def insert(self):
+    def insert(self, ret = False):
         figs = self.figures
 
         self.path = "/tmp/tsmi/{}".format(self.id)
@@ -421,12 +421,17 @@ class StatsBuilder(object):
 
         shutil.make_archive("/tmp/tsmi/out{}".format(self.id), 'zip', path)
         zip = open("/tmp/tsmi/out{}.zip".format(self.id), "rb").read()
-        with self.fs.new_file(filename="{}.zip".format(oid)) as fb:
-            fb.write(zip)
 
         plt.clf()
         shutil.rmtree(path)
         os.remove("/tmp/tsmi/out{}.zip".format(self.id))
+
+        if ret:
+            return zip
+        else:
+            with self.fs.new_file(filename="{}.zip".format(oid)) as fb:
+                fb.write(zip)
+
 
     @staticmethod
     def reset():

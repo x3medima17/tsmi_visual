@@ -38,6 +38,8 @@ class Application(tornado.web.Application):
             (r"/download/zip", DownloadHandler.ZipDownloadHandler),
 
             (r"/hook", HookHandler),
+
+            (r"/filter", FilterHandler),
         ]
 
         settings = dict(
@@ -48,6 +50,20 @@ class Application(tornado.web.Application):
             compress_response=True
         )
         tornado.web.Application.__init__(self, handlers, **settings)
+
+class FilterHandler(tornado.web.RequestHandler):
+    def get(self):
+        pass
+
+    def post(self):
+        oid = self.get_argument("oid")
+        obj = plot.StatsBuilder(oid)
+        obj.plot_all()
+        zip = obj.insert(True)
+        self.set_header('Content-Type', 'application/zip')
+        self.set_header("Content-Disposition", "attachment; filename={}".format(oid))
+        self.write(zip)
+
 
 class HookHandler(tornado.web.RequestHandler):
     def post(self):

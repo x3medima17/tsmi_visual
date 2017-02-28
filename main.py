@@ -25,6 +25,24 @@ tornado.options.parse_command_line()
 
 temporary_zips = {}
 
+def factory(field:str, min:float , max:float, context:tuple = None):
+    #context: <formation, param>
+    def fil(item):
+        s = set()
+
+        enum = item["data"][field]
+        if context:
+            info = plot.StatsBuilder.get_formation_dict(item)
+            enum = enum[info[context[0]][context[1]]]
+
+        for i, item in enumerate(enum):
+            if item >= min and  item <= max:
+                s |= {i}
+        return s
+
+    return fil
+
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
@@ -90,10 +108,14 @@ class FilterHandler(tornado.web.RequestHandler):
     def post(self):
         oid = self.get_argument("oid")
         data = self.get_argument("data")
-        data = json.dumps(data)
+        data = json.loads(data)
+        filters = []
+        for key, val in data.items():
+            filters.append(factory(key,val[0], val[1]))
+
         pprint(data)
-        return
-        obj = plot.StatsBuilder(oid)
+
+        obj = plot.StatsBuilder(oid, filters)
         obj.plot_all()
         zip = obj.insert(True)
         id = uuid4()

@@ -76,7 +76,7 @@
 
             console.log(data);
             $("#apply_filter").text("Drawing in progress...");
-            $.post("/filter", {data:data, oid : $.urlParam("oid")}, function (data) {
+            $.post("/filter", {data:JSON.stringify(data), oid : $.urlParam("oid")}, function (data) {
                 $("#apply_filter").text("Apply filter")
                 console.log("Done");
                 window.location = "/download/filtered?id="+data

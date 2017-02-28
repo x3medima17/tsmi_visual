@@ -26,8 +26,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+            <state relative-caret-position="610">
+              <caret line="85" column="19" lean-forward="true" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -494,13 +494,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00047" summary="reduce accepted">
-      <created>1487757500646</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1487757500646</updated>
-    </task>
     <task id="LOCAL-00048" summary="reduce accepted">
       <created>1487757659728</created>
       <option name="number" value="00048" />
@@ -837,7 +830,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488263694466</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="aggegation">
+      <created>1488264452376</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1488264452376</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -879,7 +879,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="tqdm&#10;" />
     <MESSAGE value="tqdm last&#10;" />
     <MESSAGE value="single update&#10;filter constructor" />
     <MESSAGE value="single update" />
@@ -904,7 +903,8 @@
     <MESSAGE value="filter get keys" />
     <MESSAGE value="ObjectID" />
     <MESSAGE value="item keys" />
-    <option name="LAST_COMMIT_MESSAGE" value="item keys" />
+    <MESSAGE value="aggegation" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggegation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1246,8 +1246,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="59" column="37" lean-forward="true" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+        <state relative-caret-position="610">
+          <caret line="85" column="19" lean-forward="true" selection-start-line="85" selection-start-column="19" selection-end-line="85" selection-end-column="19" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 
 import tornado.ioloop
 import tornado.web
@@ -78,6 +79,7 @@ class FilterHandler(tornado.web.RequestHandler):
                     }
                 }
             ])
+            res = list(res)[0]
             out["limits"][key] = res["min"], res["max"]
         pprint(out)
 

@@ -51,8 +51,8 @@
       <file leaf-file-name="filter.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/filter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="7" column="23" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="13" selection-end-column="10" />
+            <state relative-caret-position="198">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -494,13 +494,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00055" summary="reduce accepted">
-      <created>1487759154052</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1487759154053</updated>
-    </task>
     <task id="LOCAL-00056" summary="reduce accepted">
       <created>1487759388245</created>
       <option name="number" value="00056" />
@@ -837,7 +830,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488265373015</updated>
     </task>
-    <option name="localTasksCounter" value="104" />
+    <task id="LOCAL-00104" summary="template">
+      <created>1488265609390</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1488265609390</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -879,7 +879,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filter next" />
     <MESSAGE value="filter manual" />
     <MESSAGE value="&#10;" />
     <MESSAGE value="filter manual&#10;" />
@@ -904,7 +903,8 @@
     <MESSAGE value="render" />
     <MESSAGE value="time test" />
     <MESSAGE value="sm-4&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="sm-4&#10;" />
+    <MESSAGE value="template" />
+    <option name="LAST_COMMIT_MESSAGE" value="template" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1248,8 +1248,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/filter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="7" column="23" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="13" selection-end-column="10" />
+        <state relative-caret-position="198">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
         </state>
       </provider>

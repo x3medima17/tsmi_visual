@@ -74,8 +74,10 @@
                 data[key] = [min, max]
             });
             console.log(data);
+            $("#apply_filter").val("Drawing in progress...")
             $.post("/filter", {data:data, oid : $.urlParam("oid")}, function (data) {
                 console.log("Done")
+                $("#apply_filter").val("Apply filter")
             })
         })
     })

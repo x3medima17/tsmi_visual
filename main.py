@@ -108,7 +108,7 @@ class DownloadHandler(tornado.web.RequestHandler):
         def get(self):
             id = self.get_argument("id")
             self.set_header('Content-Type', 'application/zip')
-            self.set_header("Content-Disposition", "attachment; filename={}".format(oid))
+            self.set_header("Content-Disposition", "attachment; filename={}".format(id))
             self.write(temporary_zips[id])
             del temporary_zips[id]
 

@@ -90,7 +90,7 @@ class FilterHandler(tornado.web.RequestHandler):
     def post(self):
         oid = self.get_argument("oid")
         data = self.get_argument("data")
-        data = json.dumps(data.decode("utf-8"))
+        data = json.dumps(data)
         pprint(data)
         return
         obj = plot.StatsBuilder(oid)

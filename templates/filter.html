@@ -13,8 +13,8 @@
             <option value="{{ field }}">
                 {% end %}
         </datalist>
-        <input type="text" placeholder="Min">
-        <input type="text" placeholder="Max">
+        <input type="text" placeholder="Min" class="min">
+        <input type="text" placeholder="Max" class="max">
     </div>
     <form>
         <div class="col-sm-4 custom">
@@ -47,7 +47,11 @@
         });
 
         $(".field_value").change(function () {
-            console.log("changed")
+            var val = $(this).val();
+            $(this).parent(".min").val(limits[val][0])
+            $(this).parent(".max").val(limits[val][1])
+
+
         })
 
     })

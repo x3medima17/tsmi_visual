@@ -51,8 +51,8 @@
       <file leaf-file-name="filter.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/filter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="77" column="85" lean-forward="false" selection-start-line="77" selection-start-column="85" selection-end-line="77" selection-end-column="85" />
+            <state relative-caret-position="477">
+              <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -497,13 +497,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00088" summary="filter">
-      <created>1487768031436</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1487768031436</updated>
-    </task>
     <task id="LOCAL-00089" summary="no filter">
       <created>1487772550033</created>
       <option name="number" value="00089" />
@@ -840,7 +833,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488281889759</updated>
     </task>
-    <option name="localTasksCounter" value="137" />
+    <task id="LOCAL-00137" summary="Download&#10;">
+      <created>1488282153468</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1488282153468</updated>
+    </task>
+    <option name="localTasksCounter" value="138" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -882,7 +882,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="filter" />
     <MESSAGE value="return zip file" />
     <MESSAGE value="json decode&#10;" />
     <MESSAGE value="filter get keys" />
@@ -907,7 +906,8 @@
     <MESSAGE value="apply button" />
     <MESSAGE value="apply filter" />
     <MESSAGE value="POST" />
-    <option name="LAST_COMMIT_MESSAGE" value="POST" />
+    <MESSAGE value="Download&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Download&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1251,8 +1251,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/filter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="77" column="85" lean-forward="false" selection-start-line="77" selection-start-column="85" selection-end-line="77" selection-end-column="85" />
+        <state relative-caret-position="477">
+          <caret line="77" column="35" lean-forward="false" selection-start-line="77" selection-start-column="35" selection-end-line="77" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>

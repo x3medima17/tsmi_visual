@@ -86,22 +86,7 @@ class FilterHandler(tornado.web.RequestHandler):
             limits=dict()
         )
         for key in data_keys:
-            res = db.runs.aggregate([
-                {"$unwind": "$data.{}".format(key)},
-                {
-                    "$group": {
-                        "_id": ObjectId(oid),
-                        "min": {
-                            "$min": "$data.{}".format(key)
-                        },
-                        "max": {
-                            "$max": "$data.{}".format(key)
-                        }
-                    }
-                }
-            ])
-            res = list(res)[0]
-            out["limits"][key] = res["min"], res["max"]
+            out["limits"][key] = min(item["data"][key]), max(item["data"][key])
         pprint(out)
         self.render("filter.html", **out)
 

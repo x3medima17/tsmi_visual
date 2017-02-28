@@ -86,14 +86,13 @@
             $("#apply_filter").text("Drawing in progress...");
             $("#left").show().animate({
                 "width": "90%"
-            }, 20000);
+            }, 18000);
             $.post("/filter", {data:JSON.stringify(data), oid : $.urlParam("oid")}, function (data) {
                 console.log("Done");
                 $("#left").animate({
                     "width" : "100%"
                 }, {
                     duration: 1000,
-                    queue: false,
                     complete: function () {
                         $("#left").slideUp("fast")
                         $("#apply_filter").text("Apply filter")

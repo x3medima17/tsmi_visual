@@ -15,6 +15,7 @@ import gridfs
 import plot
 import multiprocessing as mp
 from subprocess import Popen
+from uuid import uuid4
 
 client = pymongo.MongoClient()
 db = client.tsmi
@@ -22,6 +23,7 @@ fs = gridfs.GridFS(db)
 
 tornado.options.parse_command_line()
 
+temporary_zips = {}
 
 class Application(tornado.web.Application):
     def __init__(self):
@@ -37,6 +39,7 @@ class Application(tornado.web.Application):
             (r"/download/json", DownloadHandler.JSONDownloadHandler),
             (r"/download/tab", DownloadHandler.TabDownloadHandler),
             (r"/download/zip", DownloadHandler.ZipDownloadHandler),
+            (r"/download/filtered", DownloadHandler.FilteredDownloadHandler),
 
             (r"/hook", HookHandler),
 
@@ -89,9 +92,9 @@ class FilterHandler(tornado.web.RequestHandler):
         obj = plot.StatsBuilder(oid)
         obj.plot_all()
         zip = obj.insert(True)
-        self.set_header('Content-Type', 'application/zip')
-        self.set_header("Content-Disposition", "attachment; filename={}".format(oid))
-        self.write(zip)
+        id = uuid4()
+        temporary_zips[str(id)] = zip
+        self.write(str(id))
 
 
 class HookHandler(tornado.web.RequestHandler):
@@ -101,6 +104,14 @@ class HookHandler(tornado.web.RequestHandler):
 
 
 class DownloadHandler(tornado.web.RequestHandler):
+    class FilteredDownloadHandler(tornado.web.RequestHandler):
+        def get(self):
+            id = self.get_argument("id")
+            self.set_header('Content-Type', 'application/zip')
+            self.set_header("Content-Disposition", "attachment; filename={}".format(oid))
+            self.write(temporary_zips[id])
+            del temporary_zips[id]
+
     class JSONDownloadHandler(tornado.web.RequestHandler):
         def get(self):
             id = self.get_argument("id", None)

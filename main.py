@@ -55,7 +55,7 @@ class Application(tornado.web.Application):
 class FilterHandler(tornado.web.RequestHandler):
     def get(self):
         oid = self.get_argument("oid")
-        item = db.runs.find_one({"_id" : oid}, {"_id" : 1})
+        item = db.runs.find_one({"_id" : ObjectId(oid)}, {"_id" : 1})
         print(item.keys())
 
     def post(self):

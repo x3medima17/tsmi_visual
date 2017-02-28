@@ -32,6 +32,11 @@
 <script>
     $(document).ready(function () {
         N = 0;
+        limits = {
+            {% for key, value in limits.items() %}
+                '{{key}}' : value,
+            {% end %}
+        }
         $("#add_filter").click(function () {
             console.log("add filter");
             var template = $("#template").clone(true);

@@ -89,6 +89,10 @@ class FilterHandler(tornado.web.RequestHandler):
 
     def post(self):
         oid = self.get_argument("oid")
+        data = self.get_argument("data")
+        data = json.dumps(data.decode("utf-8"))
+        pprint(data)
+        return
         obj = plot.StatsBuilder(oid)
         obj.plot_all()
         zip = obj.insert(True)

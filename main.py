@@ -55,8 +55,31 @@ class Application(tornado.web.Application):
 class FilterHandler(tornado.web.RequestHandler):
     def get(self):
         oid = self.get_argument("oid")
-        item = db.runs.find_one({"_id" : ObjectId(oid)}, {"_id" : 0, "meta":0})
-        print(item["data"].keys())
+        item = db.runs.find_one({"_id": ObjectId(oid)}, {"_id": 0})
+        data_keys = sorted(list(item["data"].keys()))
+        data_keys.remove("positions")
+        out = dict(
+            data_keys=data_keys,
+            param_info=item["meta"]["param_info"],
+            limits=dict()
+        )
+        for key in data_keys:
+            res = db.runs.aggregate([
+                {"$unwind": "$data.{}".format(key)},
+                {
+                    "$group": {
+                        "_id": ObjectId(oid),
+                        "min": {
+                            "$min": "$data.{}".format(key)
+                        },
+                        "max": {
+                            "$max": "$data.{}".format(key)
+                        }
+                    }
+                }
+            ])
+            out["limits"][key] = res["min"], res["max"]
+        pprint(out)
 
     def post(self):
         oid = self.get_argument("oid")

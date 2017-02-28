@@ -36,7 +36,9 @@
         $("add_filter").click(function () {
             var template = $("#template").clone(true)
             template.setAttr("id", "filter"+N)
-            $("#filters").appendChild(template)
+            template.css("display", "block")
+            template.insertAfter("#filters:last")
+//            $("#filters").appendChild(template)
 
         })
 

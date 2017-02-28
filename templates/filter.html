@@ -7,8 +7,8 @@
 <div class="row-fluid">
     <div id="template">
         <span class="filter_name"></span>
-        <input type="text" placeholder="Field">
-        <datalist class="list">
+        <input type="text" placeholder="Field" list="field_list">
+        <datalist id="field_list">
         {% for field in data_keys %}
             <option value="{{ field }}">
         {% end %}

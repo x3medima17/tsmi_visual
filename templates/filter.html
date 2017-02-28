@@ -31,6 +31,15 @@
 
 {% block script %}
 <script>
+    $.urlParam = function(name){
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+        if (results==null){
+           return null;
+        }
+        else{
+           return results[1] || 0;
+        }
+    };
     $(document).ready(function () {
         N = 0;
         limits = {
@@ -64,9 +73,11 @@
                 var max = $(this).find(".max").val();
                 data[key] = [min, max]
             });
-            console.log(data)
+            console.log(data);
+            $.post("/filter", {data:data, oid : $.urlParam("oid")}, function (data) {
+                console.log("Done")
+            })
         })
-
     })
 </script>
 {% end %}

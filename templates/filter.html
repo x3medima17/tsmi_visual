@@ -88,14 +88,14 @@
                 "width": "90%"
             }, 20000);
             $.post("/filter", {data:JSON.stringify(data), oid : $.urlParam("oid")}, function (data) {
-                $("#apply_filter").text("Apply filter")
                 console.log("Done");
                 $("#left").animate({
                     "width" : "100%"
                 },1000, function () {
                     $("#left").slideUp("fast")
+                    $("#apply_filter").text("Apply filter")
+                    window.location = "/download/filtered?id="+data
                 });
-                window.location = "/download/filtered?id="+data
 
             })
         })

@@ -4,16 +4,15 @@
 
 {% end %}
 {% block content %}
-<input type="text" name="city" list="cityname">
-<datalist id="cityname">
-    {% for field in data_keys %}
-        <option value="{{ field }}">
-    {% end %}
-</datalist>
 <div class="row-fluid">
     <div id="template">
         <span class="filter_name"></span>
-        <input type="text" placeholder="Value">
+        <input type="text" placeholder="Field">
+        <datalist class="list">
+        {% for field in data_keys %}
+            <option value="{{ field }}">
+        {% end %}
+        </datalist>
         <input type="text" placeholder="Min">
         <input type="text" placeholder="Max">
     </div>

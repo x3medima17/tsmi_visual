@@ -49,8 +49,8 @@
         $(".field_value").change(function () {
 
             var val = $(this).val();
-            console.log(val)
-            $(this).parent().find(".min").val(limits[val][0])
+            console.log(val);
+            $(this).parent().parent().find(".min").val(limits[val][0])
             $(this).parent().find(".max").val(limits[val][1])
 
 

@@ -99,7 +99,6 @@ class FilterHandler(tornado.web.RequestHandler):
             filters.append(factory(key,val[0], val[1]))
 
         pprint(data)
-        filters = []
         obj = plot.StatsBuilder(oid, filters)
         obj.plot_all()
         zip = obj.insert(True)

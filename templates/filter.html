@@ -47,7 +47,9 @@
         });
 
         $(".field_value").change(function () {
+
             var val = $(this).val();
+            console.log(val)
             $(this).parent(".min").val(limits[val][0])
             $(this).parent(".max").val(limits[val][1])
 

@@ -26,8 +26,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
+            <state relative-caret-position="198">
+              <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -494,13 +494,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00050" summary="reduce accepted">
-      <created>1487757723309</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1487757723310</updated>
-    </task>
     <task id="LOCAL-00051" summary="reduce accepted">
       <created>1487757830304</created>
       <option name="number" value="00051" />
@@ -837,7 +830,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488265071449</updated>
     </task>
-    <option name="localTasksCounter" value="99" />
+    <task id="LOCAL-00099" summary="render">
+      <created>1488265120089</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1488265120090</updated>
+    </task>
+    <option name="localTasksCounter" value="100" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -879,7 +879,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="single update&#10;filter constructor" />
     <MESSAGE value="single update" />
     <MESSAGE value="iters on X" />
     <MESSAGE value="filter next" />
@@ -904,7 +903,8 @@
     <MESSAGE value="item keys" />
     <MESSAGE value="aggegation" />
     <MESSAGE value="html&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="html&#10;" />
+    <MESSAGE value="render" />
+    <option name="LAST_COMMIT_MESSAGE" value="render" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1246,8 +1246,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="84" column="40" lean-forward="false" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
+        <state relative-caret-position="198">
+          <caret line="58" column="14" lean-forward="true" selection-start-line="58" selection-start-column="14" selection-end-line="58" selection-end-column="14" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

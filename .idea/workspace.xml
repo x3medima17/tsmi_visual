@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="05888508-863d-4ed1-9148-9860b604da05" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/filter.html" afterPath="$PROJECT_DIR$/templates/filter.html" />
     </list>
     <ignored path="tsmi_visual.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,7 +23,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="390">
@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="filter.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="filter.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/filter.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="455">
-              <caret line="57" column="12" lean-forward="true" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
+              <caret line="75" column="53" lean-forward="false" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -140,8 +140,8 @@
         <option value="$PROJECT_DIR$/post.py" />
         <option value="$PROJECT_DIR$/update.py" />
         <option value="$PROJECT_DIR$/plot.py" />
-        <option value="$PROJECT_DIR$/templates/filter.html" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/templates/filter.html" />
       </list>
     </option>
   </component>
@@ -497,13 +497,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00098" summary="html&#10;">
-      <created>1488265071449</created>
-      <option name="number" value="00098" />
-      <option name="presentableId" value="LOCAL-00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1488265071449</updated>
-    </task>
     <task id="LOCAL-00099" summary="render">
       <created>1488265120089</created>
       <option name="number" value="00099" />
@@ -840,7 +833,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488284356949</updated>
     </task>
-    <option name="localTasksCounter" value="147" />
+    <task id="LOCAL-00147" summary="builder with filters">
+      <created>1488284652314</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1488284652314</updated>
+    </task>
+    <option name="localTasksCounter" value="148" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -882,7 +882,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="item keys" />
     <MESSAGE value="aggegation" />
     <MESSAGE value="html&#10;" />
     <MESSAGE value="render" />
@@ -907,7 +906,8 @@
     <MESSAGE value="redirect" />
     <MESSAGE value="filters" />
     <MESSAGE value="truefalse" />
-    <option name="LAST_COMMIT_MESSAGE" value="truefalse" />
+    <MESSAGE value="builder with filters" />
+    <option name="LAST_COMMIT_MESSAGE" value="builder with filters" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1218,16 +1218,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/filter.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="57" column="12" lean-forward="true" selection-start-line="57" selection-start-column="12" selection-end-line="57" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/run.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1716">
@@ -1255,6 +1245,16 @@
           <caret line="117" column="26" lean-forward="true" selection-start-line="117" selection-start-column="26" selection-end-line="117" selection-end-column="26" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="75" column="53" lean-forward="false" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

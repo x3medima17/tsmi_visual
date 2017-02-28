@@ -73,7 +73,7 @@
                 var key = $(this).find(".field_value").val();
                 var min = $(this).find(".min").val();
                 var max = $(this).find(".max").val();
-                data[key] = [min, max]
+                data[key] = [Number(min), Number(max)]
             });
 
             console.log(data);

@@ -85,14 +85,14 @@
             console.log(data);
             $("#apply_filter").text("Drawing in progress...");
             $("#left").show().animate({
-                "width": "90%"
-            }, 18000);
+                "w0.00013376931265547903idth": "90%"
+            }, 20000);
             $.post("/filter", {data:JSON.stringify(data), oid : $.urlParam("oid")}, function (data) {
                 $("#apply_filter").text("Apply filter")
                 console.log("Done");
                 $("#left").animate({
                     "width" : "100%"
-                },400, function () {
+                },1000, function () {
                     $("#left").slideUp("fast")
                 });
                 window.location = "/download/filtered?id="+data

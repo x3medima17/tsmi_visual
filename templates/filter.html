@@ -42,9 +42,11 @@
     };
     $(document).ready(function () {
         N = 0;
+        var True = true;
+        var False = false;
         limits = {
             {% for key, value in limits.items() %}
-                '{{key}}': ['{{value[0]}}', '{{value[1]}}'],
+                '{{key}}': [{{value[0]}}, {{value[1]}}],
             {% end %}
         }
         $("#add_filter").click(function () {

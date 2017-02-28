@@ -51,11 +51,12 @@
       <file leaf-file-name="filter.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/filter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="87" column="21" lean-forward="false" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+            <state relative-caret-position="418">
+              <caret line="34" column="16" lean-forward="false" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -498,13 +499,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00102" summary="time test">
-      <created>1488265296532</created>
-      <option name="number" value="00102" />
-      <option name="presentableId" value="LOCAL-00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1488265296533</updated>
-    </task>
     <task id="LOCAL-00103" summary="sm-4&#10;">
       <created>1488265373015</created>
       <option name="number" value="00103" />
@@ -841,7 +835,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488285037436</updated>
     </task>
-    <option name="localTasksCounter" value="151" />
+    <task id="LOCAL-00151" summary="animation">
+      <created>1488285852239</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1488285852239</updated>
+    </task>
+    <option name="localTasksCounter" value="152" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -883,7 +884,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="render" />
     <MESSAGE value="time test" />
     <MESSAGE value="sm-4&#10;" />
     <MESSAGE value="template" />
@@ -908,7 +908,8 @@
     <MESSAGE value="number" />
     <MESSAGE value="zip format" />
     <MESSAGE value="filters" />
-    <option name="LAST_COMMIT_MESSAGE" value="filters" />
+    <MESSAGE value="animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="animation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1252,11 +1253,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/filter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="87" column="21" lean-forward="false" selection-start-line="87" selection-start-column="21" selection-end-line="87" selection-end-column="21" />
+        <state relative-caret-position="418">
+          <caret line="34" column="16" lean-forward="false" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

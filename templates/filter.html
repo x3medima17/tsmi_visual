@@ -34,14 +34,10 @@
     $(document).ready(function () {
         N = 0;
         limits = {
-        {%
-            for key, value in limits.items() %}
-        '{{key}}'
-        :
-        ['{{value[0]}}', '{{value[1]}}'],
-        { % end %
-    }
-    }
+            {% for key, value in limits.items() %}
+                '{{key}}': ['{{value[0]}}', '{{value[1]}}'],
+            { % end %}
+        }
         $("#add_filter").click(function () {
             console.log("add filter");
             var template = $("#template").clone(true);
@@ -49,7 +45,7 @@
             template.css("display", "block");
             template.addClass("filter")
 //            template.insertAfter("#filters: first");
-            $("#filters").append(template)
+            $("#filters").append(template);
             N++;
         });
 
@@ -63,11 +59,11 @@
         $("#apply_filter").click(function () {
             var data = {};
             $(".filter").each(function (index) {
-                var key = $(this).find(".field_value").val()
-                var min = $(this).find(".min").val()
-                var max = $(this).find(".max").val()
+                var key = $(this).find(".field_value").val();
+                var min = $(this).find(".min").val();
+                var max = $(this).find(".max").val();
                 data[key] = [min, max]
-            })
+            });
             console.log(data)
         })
 

@@ -4,25 +4,20 @@
 
 {% end %}
 {% block content %}
-<style type="text/css">
-  .custom {
-    margin-left: 20px;
-  }
-  .custom > div {
-    margin-right: 10px !important;
-    margin-bottom: 5px;
-    width: 220px;
-  }
 
-
-</style>
-  <div class="row-fluid">
+<div class="row-fluid">
+    <div id="template">
+        <span class="filter_name"></span>
+        <input type="text" placeholder="Value">
+        <input type="text" placeholder="Min">
+        <input type="text" placeholder="Max">
+    </div>
     <form>
-         <div class="col-sm-4 custom">
+        <div class="col-sm-4 custom">
             <button type="button" class="btn btn-block btn-primary" id="add_filter">Add filter</button>
-         </div>
+        </div>
     </form>
-  </div>
+</div>
 {% end %}
 
 

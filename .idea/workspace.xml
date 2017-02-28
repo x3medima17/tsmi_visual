@@ -51,8 +51,8 @@
       <file leaf-file-name="filter.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/filter.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="44" column="48" lean-forward="false" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
+            <state relative-caret-position="169">
+              <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -496,13 +496,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00076" summary="positions filter">
-      <created>1487765730591</created>
-      <option name="number" value="00076" />
-      <option name="presentableId" value="LOCAL-00076" />
-      <option name="project" value="LOCAL" />
-      <updated>1487765730591</updated>
-    </task>
     <task id="LOCAL-00077" summary="positions filter">
       <created>1487765772970</created>
       <option name="number" value="00077" />
@@ -839,7 +832,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488280248891</updated>
     </task>
-    <option name="localTasksCounter" value="125" />
+    <task id="LOCAL-00125" summary="insert after">
+      <created>1488280303807</created>
+      <option name="number" value="00125" />
+      <option name="presentableId" value="LOCAL-00125" />
+      <option name="project" value="LOCAL" />
+      <updated>1488280303807</updated>
+    </task>
+    <option name="localTasksCounter" value="126" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -881,7 +881,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="enum" />
     <MESSAGE value="positions filter" />
     <MESSAGE value="marker&#10;" />
     <MESSAGE value="sorted dict" />
@@ -906,7 +905,8 @@
     <MESSAGE value="js gen" />
     <MESSAGE value="limits" />
     <MESSAGE value="limits&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="limits&#10;" />
+    <MESSAGE value="insert after" />
+    <option name="LAST_COMMIT_MESSAGE" value="insert after" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1250,8 +1250,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/filter.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="44" column="48" lean-forward="false" selection-start-line="44" selection-start-column="48" selection-end-line="44" selection-end-column="48" />
+        <state relative-caret-position="169">
+          <caret line="45" column="41" lean-forward="false" selection-start-line="45" selection-start-column="41" selection-end-line="45" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>

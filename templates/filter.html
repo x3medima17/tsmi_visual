@@ -42,7 +42,8 @@
             var template = $("#template").clone(true);
             template.attr("id", "filter" + N);
             template.css("display", "block");
-            template.insertAfter("#filters:first");
+//            template.insertAfter("#filters: first");
+            $("#filters").append(template)
             N++;
         });
 

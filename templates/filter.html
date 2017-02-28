@@ -76,7 +76,11 @@
             console.log(data);
             $("#apply_filter").val("Drawing in progress...")
             $.post("/filter", {data:data, oid : $.urlParam("oid")}, function (data) {
-                console.log(data)
+                    var blob=new Blob([data]);
+                    var link=document.createElement('a');
+                    link.href=window.URL.createObjectURL(blob);
+                    link.download="out.zip";
+                    link.click();
                 console.log("Done")
                 $("#apply_filter").val("Apply filter")
             })

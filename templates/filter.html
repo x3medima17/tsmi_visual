@@ -34,7 +34,7 @@
         N = 0;
         limits = {
             {% for key, value in limits.items() %}
-                '{{key}}' : value,
+                '{{key}}' : {{value}},
             {% end %}
         }
         $("#add_filter").click(function () {

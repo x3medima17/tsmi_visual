@@ -7,11 +7,11 @@
 <div class="row-fluid">
     <div id="template" style="display: none">
         <span class="filter_name"></span>
-        <input type="text" placeholder="Field" list="field_list">
+        <input type="text" placeholder="Field" list="field_list" class="field_value">
         <datalist id="field_list">
-        {% for field in data_keys %}
+            {% for field in data_keys %}
             <option value="{{ field }}">
-        {% end %}
+                {% end %}
         </datalist>
         <input type="text" placeholder="Min">
         <input type="text" placeholder="Max">
@@ -28,19 +28,21 @@
 {% end %}
 
 
-
 {% block script %}
 <script>
     $(document).ready(function () {
-        N = 0
+        N = 0;
         $("#add_filter").click(function () {
-            console.log("add filter")
-            var template = $("#template").clone(true)
-            template.attr("id", "filter"+N)
-            template.css("display", "block")
-            template.insertAfter("#filters:last")
-//            $("#filters").appendChild(template)
+            console.log("add filter");
+            var template = $("#template").clone(true);
+            template.attr("id", "filter" + N);
+            template.css("display", "block");
+            template.insertAfter("#filters:last");
+            N++;
+        });
 
+        $(".field_value").change(function () {
+            console.log("changed")
         })
 
     })
@@ -49,9 +51,9 @@
 
 {% block style %}
 <style>
-.action-buttons-div a{
-  margin-right:3px;
-}
+    .action-buttons-div a {
+        margin-right: 3px;
+    }
 </style>
 {% end %}
 

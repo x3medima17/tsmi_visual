@@ -17,14 +17,23 @@
 
 </style>
   <div class="row-fluid">
-
+    <form>
+        <button type="button" class="btn btn-block btn-primary" id="add_filter">Add filter</button>
+    </form>
   </div>
 {% end %}
 
 
 
 {% block script %}
+<script>
+    $(document).ready(function () {
+        $("add_filter").click(function () {
+            console.log("add filter")
+        })
 
+    })
+</script>
 {% end %}
 
 {% block style %}

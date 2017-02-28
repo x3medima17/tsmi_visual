@@ -57,8 +57,6 @@ class FilterHandler(tornado.web.RequestHandler):
     def get(self):
         oid = self.get_argument("oid")
         item = db.runs.find_one({"_id": ObjectId(oid)}, {"_id": 0})
-        self.write("hello")
-        return
         data_keys = sorted(list(item["data"].keys()))
         data_keys.remove("positions")
         out = dict(

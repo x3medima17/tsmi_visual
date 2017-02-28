@@ -10,8 +10,8 @@
         <input type="text" placeholder="Field" list="field_list" class="field_value">
         <datalist id="field_list">
             {% for field in data_keys %}
-            <option value="{{ field }}">
-                {% end %}
+                <option value="{{ field }}">
+            {% end %}
         </datalist>
         <input type="text" placeholder="Min" class="min">
         <input type="text" placeholder="Max" class="max">
@@ -36,7 +36,7 @@
         limits = {
             {% for key, value in limits.items() %}
                 '{{key}}': ['{{value[0]}}', '{{value[1]}}'],
-            { % end %}
+            {% end %}
         }
         $("#add_filter").click(function () {
             console.log("add filter");

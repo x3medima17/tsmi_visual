@@ -91,12 +91,15 @@
                 console.log("Done");
                 $("#left").animate({
                     "width" : "100%"
-                },1000, function () {
-                    $("#left").slideUp("fast")
-                    $("#apply_filter").text("Apply filter")
-                    window.location = "/download/filtered?id="+data
-                });
-
+                }, {
+                    duration: 1000,
+                    queue: false,
+                    complete: function () {
+                        $("#left").slideUp("fast")
+                        $("#apply_filter").text("Apply filter")
+                        window.location = "/download/filtered?id=" + data
+                    }
+                })
             })
         })
     })

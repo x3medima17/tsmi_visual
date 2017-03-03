@@ -79,6 +79,37 @@ class StatsBuilder(object):
             # print(self.item)
             # print(self.item["data"]["iters"])
 
+    def plot_bases(self):
+
+
+        fig = plt.figure()
+
+        ax = plt.subplot(121)
+        y = self.item["data"]["itemBase1_maxValue"]
+        iters = self.item["data"]["iters"]
+        ax.plot(iters, y, marker='o')
+
+        ax.set_xlabel("Iteration")
+        ax.set_ylabel("itemBase1_maxValue")
+        ax.set_yscale('linear')
+        ax.set_title('itemBase1_maxValue')
+        ax.grid(True)
+
+        ax = plt.subplot(122)
+
+        y = self.item["data"]["itemBase2_maxValue"]
+        ax.plot(iters, y, marker='o')
+
+        ax.set_xlabel("Iteration")
+        ax.set_ylabel("itemBase2_maxValue")
+        ax.set_yscale('linear')
+        ax.set_title('itemBase2_maxValue')
+        ax.grid(True)
+
+        plt.tight_layout()
+
+        self.figures["bases"] = [fig]
+
 
     def plot_main(self):
 
@@ -387,6 +418,7 @@ class StatsBuilder(object):
         self.plot_positions()
         self.plot_freq()
         self.plot_accepted_stats()
+        self.plot_bases()
 
     def show(self):
         plt.show()

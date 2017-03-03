@@ -86,7 +86,7 @@ class StatsBuilder(object):
         fig = plt.figure()
 
         ax = plt.subplot(121)
-        y = self.item["data"]["itemBase1_maxValue"]
+        y = self.item["data"]["itemBase1_LSQ"]
         iters = self.item["data"]["iters"]
         ax.plot(iters, y, marker='o')
 
@@ -98,7 +98,7 @@ class StatsBuilder(object):
 
         ax = plt.subplot(122)
 
-        y = self.item["data"]["itemBase2_maxValue"]
+        y = self.item["data"]["itemBase2_LSQ"]
         ax.plot(iters, y, marker='o')
 
         ax.set_xlabel("Iteration")

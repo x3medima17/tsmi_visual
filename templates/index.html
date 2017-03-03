@@ -10,7 +10,6 @@
 					<tr>
 						<th>#</th>
 						<th class="hidden-phone">Time</th>
-						<th>Max iters</th>
 						<th class="hidden-480">Total samples</th>
 
 						<th class="hidden-phone">m</th>
@@ -32,7 +31,6 @@
 							<a class="submission_info" href="/filter?oid={{ run['_id'] }}">{{ (run["_id"]) }}</a>
 						</td>
 						<td>{{ run["meta"]["time"] }}</td>
-						<td>{{ run["meta"]["max_iters"] }}</td>
 						<td class="hidden-phone">{{ len(run["data"]["delta"])}}</td>
 						<td>{{ run["meta"]["m"] }}</td>
 						<td>{{ run["meta"]["S0"] }}</td>

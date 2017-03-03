@@ -64,8 +64,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="31" column="70" lean-forward="false" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+            <state relative-caret-position="51">
+              <caret line="15" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -508,13 +508,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00115" summary="js gen">
-      <created>1488279044550</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1488279044550</updated>
-    </task>
     <task id="LOCAL-00116" summary="js gen">
       <created>1488279093292</created>
       <option name="number" value="00116" />
@@ -851,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488290720781</updated>
     </task>
-    <option name="localTasksCounter" value="164" />
+    <task id="LOCAL-00164" summary="filter link">
+      <created>1488521885833</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1488521885835</updated>
+    </task>
+    <option name="localTasksCounter" value="165" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -893,7 +893,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="template" />
     <MESSAGE value="datalist" />
     <MESSAGE value="field list" />
     <MESSAGE value="appendchild" />
@@ -918,7 +917,8 @@
     <MESSAGE value="minmax" />
     <MESSAGE value="filters" />
     <MESSAGE value="meta user project" />
-    <option name="LAST_COMMIT_MESSAGE" value="meta user project" />
+    <MESSAGE value="filter link" />
+    <option name="LAST_COMMIT_MESSAGE" value="filter link" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1336,8 +1336,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="31" column="70" lean-forward="false" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+        <state relative-caret-position="51">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
           <folding />
         </state>
       </provider>

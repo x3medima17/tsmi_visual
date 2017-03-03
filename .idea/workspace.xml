@@ -4,7 +4,6 @@
     <list default="true" id="05888508-863d-4ed1-9148-9860b604da05" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plot.py" afterPath="$PROJECT_DIR$/plot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/update.py" afterPath="$PROJECT_DIR$/update.py" />
     </list>
     <ignored path="tsmi_visual.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,7 +84,7 @@
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="258">
-              <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+              <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -509,13 +508,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00118" summary="js gen">
-      <created>1488279515544</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1488279515544</updated>
-    </task>
     <task id="LOCAL-00119" summary="limits">
       <created>1488279650429</created>
       <option name="number" value="00119" />
@@ -852,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1488548089453</updated>
     </task>
-    <option name="localTasksCounter" value="167" />
+    <task id="LOCAL-00167" summary="plot bases">
+      <created>1488549194915</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1488549194916</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1387,7 +1386,7 @@
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
-          <caret line="60" column="22" lean-forward="false" selection-start-line="60" selection-start-column="22" selection-end-line="60" selection-end-column="22" />
+          <caret line="60" column="31" lean-forward="false" selection-start-line="60" selection-start-column="31" selection-end-line="60" selection-end-column="31" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

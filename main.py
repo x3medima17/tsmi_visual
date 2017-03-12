@@ -237,7 +237,10 @@ class MainHandler(tornado.web.RequestHandler):
                 else:
                     f.write(str(data[key][i]) + "\t")
             f.write("\n")
-        req["meta"]["min_delta"] = min(data["delta"])
+        (m, i) = min((v, i) for i, v in enumerate(data["delta"]))
+        req["meta"]["min_delta"] = m
+        req["meta"]["min_iter"] = i
+
         oid = db.runs.insert(req)
 
         def worker(oid):

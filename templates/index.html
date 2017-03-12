@@ -39,7 +39,7 @@
 						<td class="hidden-480">{{ run["data"]["accepted"].count(True) }}</td>
 						
 						<td class="hidden-480">{{ run["meta"]["min_delta"] }}</td>
-						<td class="hidden-480">{{ run["meta"]["min_iter"] }}</td>
+						<td class="hidden-480">{{ int(run["meta"]["min_iter"]) }}</td>
 
 						<th>{{ run["meta"]["devPress"]}}</th>
 						<th>{{ run["meta"]["devPerm"]}}</th>

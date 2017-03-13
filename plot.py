@@ -114,25 +114,25 @@ class StatsBuilder(object):
 
     def plot_main(self):
 
-        deltas = self.item["data"]["new_value"]
+        new_deltas = self.item["data"]["new_value"]
 
         fig = plt.figure()
         fig.canvas.set_window_title("Main")
 
         ax = plt.subplot(121)
         iters = self.item["data"]["iters"]
-        ax.plot(iters, deltas, marker='o')
+        ax.plot(iters, new_deltas , marker='o')
 
         ax.set_xlabel("Iteration")
         ax.set_ylabel("Value")
         ax.set_yscale('linear')
-        ax.set_title('Delta')
+        ax.set_title('New Delta')
         ax.grid(True)
 
         ax = plt.subplot(122)
 
-        ax.hist(deltas, 50)  # bins=np.arange(min(deltas), max(deltas), 0.1))
-        ax.set_title('Delta hist')
+        ax.hist(new_deltas , 50)  # bins=np.arange(min(deltas), max(deltas), 0.1))
+        ax.set_title('New Delta hist')
 
         ax.set_xlabel("Value")
         ax.set_ylabel("Occurence")

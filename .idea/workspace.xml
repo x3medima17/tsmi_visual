@@ -83,8 +83,8 @@
       <file leaf-file-name="plot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+            <state relative-caret-position="692">
+              <caret line="134" column="26" lean-forward="false" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -508,13 +508,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00123" summary="limits">
-      <created>1488280190101</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1488280190101</updated>
-    </task>
     <task id="LOCAL-00124" summary="limits&#10;">
       <created>1488280248891</created>
       <option name="number" value="00124" />
@@ -851,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489360337118</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="plot new value&#10;">
+      <created>1489395419228</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1489395419228</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -893,7 +893,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="appendchild" />
     <MESSAGE value="console log" />
     <MESSAGE value="attr" />
     <MESSAGE value="js gen" />
@@ -918,7 +917,8 @@
     <MESSAGE value="filter link" />
     <MESSAGE value="plot bases" />
     <MESSAGE value="min iter" />
-    <option name="LAST_COMMIT_MESSAGE" value="min iter" />
+    <MESSAGE value="plot new value&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="plot new value&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1385,8 +1385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="120" column="0" lean-forward="true" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+        <state relative-caret-position="692">
+          <caret line="134" column="26" lean-forward="false" selection-start-line="134" selection-start-column="26" selection-end-line="134" selection-end-column="26" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

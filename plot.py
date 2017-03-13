@@ -114,7 +114,7 @@ class StatsBuilder(object):
 
     def plot_main(self):
 
-        deltas = self.item["data"]["delta"]
+        deltas = self.item["data"]["new_value"]
 
         fig = plt.figure()
         fig.canvas.set_window_title("Main")

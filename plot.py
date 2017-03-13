@@ -122,7 +122,7 @@ class StatsBuilder(object):
         ax = plt.subplot(121)
         iters = self.item["data"]["iters"]
         ax.plot(iters, new_deltas , marker='o')
-        ax.plot(iters, self.item["data"]["delta"], color='r', linewidth=3.0)
+        ax.plot(iters, self.item["data"]["delta"], color='r', linewidth=1.0)
         ax.set_xlabel("Iteration")
         ax.set_ylabel("Value")
         ax.set_yscale('linear')

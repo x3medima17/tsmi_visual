@@ -47,7 +47,14 @@
 						<th>{{ run["meta"]["devPerm"]}}</th>
 						<th>{{ run["meta"]["user"]}}</th>
 						<th>{{ run["meta"]["project"]}}</th>
-						<th>{{ int(run["meta"]["fit_no"]) }}</th>
+
+						<th>
+							{% try %}
+								{{ int(run["meta"]["fit_no"]) }}
+							{% except %}
+								0
+							{% end %}
+						</th>
 
 
 						<th>

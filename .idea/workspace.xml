@@ -26,8 +26,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="158" column="38" lean-forward="true" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
+            <state relative-caret-position="3102">
+              <caret line="158" column="38" lean-forward="false" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -38,7 +38,7 @@
       <file leaf-file-name="run.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/run.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22">
+            <state relative-caret-position="528">
               <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
               <folding>
                 <marker date="1487626427767" expanded="true" signature="5022:5190" ph="..." />
@@ -61,8 +61,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+            <state relative-caret-position="638">
+              <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -508,13 +508,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00130" summary="apply filter">
-      <created>1488281058111</created>
-      <option name="number" value="00130" />
-      <option name="presentableId" value="LOCAL-00130" />
-      <option name="project" value="LOCAL" />
-      <updated>1488281058111</updated>
-    </task>
     <task id="LOCAL-00131" summary="apply filter">
       <created>1488281166936</created>
       <option name="number" value="00131" />
@@ -851,7 +844,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489586296005</updated>
     </task>
-    <option name="localTasksCounter" value="179" />
+    <task id="LOCAL-00179" summary="fit no">
+      <created>1489595882412</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1489595882412</updated>
+    </task>
+    <option name="localTasksCounter" value="180" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1366,7 +1366,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/run.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
+        <state relative-caret-position="528">
           <caret line="24" column="14" lean-forward="false" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="14" />
           <folding>
             <marker date="1487626427767" expanded="true" signature="5022:5190" ph="..." />
@@ -1377,8 +1377,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="158" column="38" lean-forward="true" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
+        <state relative-caret-position="3102">
+          <caret line="158" column="38" lean-forward="false" selection-start-line="158" selection-start-column="38" selection-end-line="158" selection-end-column="38" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -1387,8 +1387,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="55" column="37" lean-forward="false" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
+        <state relative-caret-position="638">
+          <caret line="54" column="34" lean-forward="false" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
           <folding />
         </state>
       </provider>

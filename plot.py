@@ -113,6 +113,8 @@ class StatsBuilder(object):
 
     def plot_main(self):
         new_deltas = self.item["data"]["new_value"]
+        delta = self.item["data"]["delta"]
+        accepted = self.item["data"]["accepted"]
 
         fig = plt.figure()
         fig.canvas.set_window_title("Main")
@@ -120,7 +122,11 @@ class StatsBuilder(object):
         ax = plt.subplot(121)
         iters = self.item["data"]["iters"]
         ax.plot(iters, new_deltas , marker='o')
-        ax.plot(iters, self.item["data"]["delta"],marker='o', color='r', linewidth=3.0)
+
+        accepted_delta = [(iters[i], x) for i,x in enumerate(delta) if accepted[i] == True]
+        acc_iters, acc_delta = zip(*accepted_delta)
+
+        ax.plot(acc_iters, acc_delta, marker='o', color='r', linewidth=3.0)
         ax.set_xlabel("Iteration")
         ax.set_ylabel("Value")
         ax.set_yscale('linear')

@@ -113,7 +113,6 @@ class StatsBuilder(object):
 
 
     def plot_main(self):
-
         new_deltas = self.item["data"]["new_value"]
 
         fig = plt.figure()
@@ -141,7 +140,17 @@ class StatsBuilder(object):
 
         self.figures["main"] = [fig]
 
-    # plt.savefig("{}/main.png".format(path))
+    def plot_s0(self):
+        fig = plt.figure()
+        ax = plt.subplot(111)
+        iters = self.item["data"]["iters"]
+        s0 = self.item["data"]["S0"]
+        ax.plot(iters, s0)
+        ax.set_xlabel("Iteration")
+        ax.set_ylabel("s0")
+        ax.grid(True)
+        self.figures["s0"] = [fig]
+
 
     @staticmethod
     def get_param_dict(item):

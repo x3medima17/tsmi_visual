@@ -136,7 +136,7 @@ class StatsBuilder(object):
         ax = plt.subplot(122)
 
         ax.hist(new_deltas , 50)  # bins=np.arange(min(deltas), max(deltas), 0.1))
-        ax.hist(acc_delta, 50)
+        ax.hist(acc_delta, 50, color='r')
         ax.set_title('New Delta hist')
 
         ax.set_xlabel("Value")

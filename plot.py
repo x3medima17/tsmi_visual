@@ -58,7 +58,6 @@ class StatsBuilder(object):
             accepted.append(fil(self.item))
 
         accepted = reduce(lambda x,y : x & y, accepted)
-        print("--------------",accepted)
         for key, value in self.item["data"].items():
             if key == "positions":
                 value = list(map(list, zip(*value)))
@@ -429,6 +428,7 @@ class StatsBuilder(object):
         self.plot_freq()
         self.plot_accepted_stats()
         self.plot_bases()
+        self.plot_s0()
 
     def show(self):
         plt.show()

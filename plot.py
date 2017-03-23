@@ -513,10 +513,16 @@ class StatsBuilder(object):
 
     @staticmethod
     def worker(oid, filters):
-        db, fs = connect()
-        obj = StatsBuilder(oid, filters)
-        obj.plot_all()
-        obj.insert()
+        try:
+            db, fs = connect()
+            obj = StatsBuilder(oid, filters)
+            obj.plot_all()
+            obj.insert()
+        except Exception as e:
+            print(oid)
+            print(e)
+
+
 
     def __del__(self):
         plt.close()

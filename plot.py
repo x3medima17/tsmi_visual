@@ -114,13 +114,13 @@ class StatsBuilder(object):
     def plot_main(self):
         new_deltas = self.item["data"]["new_value"]
         delta = self.item["data"]["delta"]
+        iters = self.item["data"]["iters"]
         accepted = self.item["data"]["accepted"]
 
         fig = plt.figure()
         fig.canvas.set_window_title("Main")
 
         ax = plt.subplot(121)
-        iters = self.item["data"]["iters"]
         ax.plot(iters, new_deltas , marker='o')
 
         accepted_delta = [(iters[i], x) for i,x in enumerate(delta) if accepted[i] == True]
@@ -136,7 +136,7 @@ class StatsBuilder(object):
         ax = plt.subplot(122)
 
         ax.hist(new_deltas , 50)  # bins=np.arange(min(deltas), max(deltas), 0.1))
-        ax.hist(acc_delta, 50, color='r')
+        ax.hist(acc_delta, 50, color='#238400')
         ax.set_title('New Delta hist')
 
         ax.set_xlabel("Value")
@@ -262,12 +262,19 @@ class StatsBuilder(object):
         self.figures["positions"] = figs
         figh = plt.figure()
         i = 1
+        delta = self.item["data"]["delta"]
+        iters = self.item["data"]["iters"]
+        accepted = self.item["data"]["accepted"]
+
+        accepted_delta = [(iters[i], x) for i, x in enumerate(delta) if accepted[i] == True]
+        acc_iters, acc_delta = zip(*accepted_delta)
         for param, value in params.items():
             for form_index, index in value.items():
                 ax = plt.subplot(nRows, nCols, i)
                 # ax.ticklabel_format(st)
                 vals = item["data"]["positions"][index]
 
+                vals = [vals[i] for i in acc_iters]
                 ax.hist(vals, 50)  # bins=np.arange(min(deltas), max(deltas), 0.1))
                 ax.set_title("{}{} hist".format(param[0], form_index + 1))
 

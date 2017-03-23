@@ -126,7 +126,7 @@ class StatsBuilder(object):
         accepted_delta = [(iters[i], x) for i,x in enumerate(delta) if accepted[i] == True]
         acc_iters, acc_delta = zip(*accepted_delta)
 
-        ax.plot(acc_iters, acc_delta, marker='o', color='r', linewidth=3.0)
+        ax.plot(acc_iters, acc_delta, marker='o', color='#238400', linewidth=3.0)
         ax.set_xlabel("Iteration")
         ax.set_ylabel("Value")
         ax.set_yscale('linear')

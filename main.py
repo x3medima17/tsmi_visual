@@ -73,6 +73,14 @@ class Application(tornado.web.Application):
         )
         tornado.web.Application.__init__(self, handlers, **settings)
 
+class DeleteHandler(tornado.web.RequestHandler):
+    def post(self):
+        oid = self.get_argument("oid")
+        selector = {"_id": ObjectId(oid)}
+        db['fs.chunks'].remove(selector)
+        db['fs.files'].remove(selector)
+        result = db.runs.remove(selector)
+        self.write(json.dumps(result))
 
 class FilterHandler(tornado.web.RequestHandler):
     def get(self):

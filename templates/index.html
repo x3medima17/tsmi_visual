@@ -80,7 +80,7 @@
 
 								</ul>
 
-								<button type="button" class="btn btn-mini btn-danger"><i class="ace-icon icon-trash"></i></button>
+								<button type="button" class="btn btn-mini btn-danger remove-btn" id="remove-btn-{{ run['_id'] }}"><i class="ace-icon icon-trash"></i></button>
 							</div>
 						</th>
 					</tr>
@@ -101,7 +101,11 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+	$(".remove-btn").dblclick(function () {
+	    var id = $(this).attr("id")
+		$(this).closest('tr').slideUp("fast")
 
+    })
 
 })
 </script>

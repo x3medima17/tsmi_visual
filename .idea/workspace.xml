@@ -62,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="748">
-              <caret line="82" column="88" lean-forward="false" selection-start-line="82" selection-start-column="88" selection-end-line="82" selection-end-column="88" />
+              <caret line="82" column="75" lean-forward="false" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
               <folding />
             </state>
           </provider>
@@ -507,13 +507,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00140" summary="filtered download handler">
-      <created>1488283687119</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
-      <option name="project" value="LOCAL" />
-      <updated>1488283687119</updated>
-    </task>
     <task id="LOCAL-00141" summary="redirect">
       <created>1488283763325</created>
       <option name="number" value="00141" />
@@ -850,7 +843,14 @@
       <option name="project" value="LOCAL" />
       <updated>1490263238977</updated>
     </task>
-    <option name="localTasksCounter" value="189" />
+    <task id="LOCAL-00189" summary="remove">
+      <created>1491207451430</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1491207451430</updated>
+    </task>
+    <option name="localTasksCounter" value="190" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -892,7 +892,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="limits&#10;" />
     <MESSAGE value="insert after" />
     <MESSAGE value="append" />
     <MESSAGE value="apply button" />
@@ -917,7 +916,8 @@
     <MESSAGE value="fit no" />
     <MESSAGE value="hist, color" />
     <MESSAGE value="red main" />
-    <option name="LAST_COMMIT_MESSAGE" value="red main" />
+    <MESSAGE value="remove" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1363,7 +1363,7 @@
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
-          <caret line="82" column="88" lean-forward="false" selection-start-line="82" selection-start-column="88" selection-end-line="82" selection-end-column="88" />
+          <caret line="82" column="75" lean-forward="false" selection-start-line="82" selection-start-column="75" selection-end-line="82" selection-end-column="75" />
           <folding />
         </state>
       </provider>

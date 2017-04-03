@@ -62,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="748">
-              <caret line="82" column="96" lean-forward="false" selection-start-line="82" selection-start-column="96" selection-end-line="82" selection-end-column="96" />
+              <caret line="82" column="74" lean-forward="false" selection-start-line="82" selection-start-column="74" selection-end-line="82" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -507,13 +507,6 @@
       <option name="presentableId" value="Default" />
       <updated>1479556198906</updated>
     </task>
-    <task id="LOCAL-00143" summary="filters">
-      <created>1488284028709</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1488284028709</updated>
-    </task>
     <task id="LOCAL-00144" summary="filters">
       <created>1488284129282</created>
       <option name="number" value="00144" />
@@ -850,7 +843,14 @@
       <option name="project" value="LOCAL" />
       <updated>1491207677357</updated>
     </task>
-    <option name="localTasksCounter" value="192" />
+    <task id="LOCAL-00192" summary="remove">
+      <created>1491208346717</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1491208346717</updated>
+    </task>
+    <option name="localTasksCounter" value="193" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1363,7 +1363,7 @@
     <entry file="file://$PROJECT_DIR$/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="748">
-          <caret line="82" column="96" lean-forward="false" selection-start-line="82" selection-start-column="96" selection-end-line="82" selection-end-column="96" />
+          <caret line="82" column="74" lean-forward="false" selection-start-line="82" selection-start-column="74" selection-end-line="82" selection-end-column="74" />
           <folding />
         </state>
       </provider>

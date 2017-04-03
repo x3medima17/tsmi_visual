@@ -104,7 +104,10 @@ $(document).ready(function(){
 	$(".remove-btn").dblclick(function () {
 	    var id = $(this).attr("run")
 		$(this).closest('tr').hide("fast")
-		console.log(id)
+//		console.log(id)
+		$.post("/delete",{oid:id}, function (data) {
+			console.log(data)
+        })
     })
 
 })

@@ -62,6 +62,8 @@ class Application(tornado.web.Application):
             (r"/hook", HookHandler),
 
             (r"/filter", FilterHandler),
+
+            (r"/delete", DeleteHandler),
         ]
 
         settings = dict(

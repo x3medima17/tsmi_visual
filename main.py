@@ -21,7 +21,10 @@ client = pymongo.MongoClient()
 db = client.tsmi
 fs = gridfs.GridFS(db)
 
-tornado.options.parse_command_line()
+from tornado.options import define, options
+define("port", default=8080, help="Port")
+options.parse_command_line()
+
 
 temporary_zips = {}
 
@@ -380,5 +383,5 @@ class RunHandler(tornado.web.RequestHandler):
 
 if __name__ == "__main__":
     http_server = tornado.httpserver.HTTPServer(Application())
-    http_server.listen(8080)
+    http_server.listen(options.port)
     tornado.ioloop.IOLoop.current().start()

@@ -1,0 +1,5 @@
+tornado
+matplotlib
+numpy
+pymongo
+tqdm

@@ -88,7 +88,7 @@ class StatsBuilder(object):
 
         for i,item in enumerate(keys):
             ax = plt.subplot(100 + len(keys)*10 + i+1)
-            y = self.item["data"]["itemBase1_maxValue"]
+            y = self.item["data"][item]
             iters = self.item["data"]["iters"]
             ax.plot(iters, y, marker='o')
 

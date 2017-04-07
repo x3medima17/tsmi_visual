@@ -84,7 +84,7 @@ class StatsBuilder(object):
 
         fig = plt.figure()
         keys = [x for x in self.item["data"]
-                if x.endswith("maxValue") and x.startsswith("itemBase")]
+                if x.endswith("maxValue") and x.startswith("itemBase")]
 
         for i,item in enumerate(keys):
             ax = plt.subplot(100 + len(keys)*10 + i+1)

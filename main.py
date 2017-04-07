@@ -172,6 +172,7 @@ class DownloadHandler(tornado.web.RequestHandler):
             for key in sorted(data.keys()):
                 if not key in header:
                     header.append(key)
+            print(header)
             out += "\t".join(header) + "\n"
             for i in range(m):
                 for key in header:

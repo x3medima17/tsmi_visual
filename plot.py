@@ -83,28 +83,20 @@ class StatsBuilder(object):
 
 
         fig = plt.figure()
+        keys = [x for x in self.item["data"]
+                if x.endswith("maxValue") and x.startsswith("itemBase")]
 
-        ax = plt.subplot(121)
-        y = self.item["data"]["itemBase1_LSQ"]
-        iters = self.item["data"]["iters"]
-        ax.plot(iters, y, marker='o')
+        for i,item in enumerate(keys):
+            ax = plt.subplot(100 + len(keys)*10 + i+1)
+            y = self.item["data"]["itemBase1_maxValue"]
+            iters = self.item["data"]["iters"]
+            ax.plot(iters, y, marker='o')
 
-        ax.set_xlabel("Iteration")
-        ax.set_ylabel("itemBase1_maxValue")
-        ax.set_yscale('linear')
-        ax.set_title('itemBase1_maxValue')
-        ax.grid(True)
-
-        ax = plt.subplot(122)
-
-        y = self.item["data"]["itemBase2_LSQ"]
-        ax.plot(iters, y, marker='o')
-
-        ax.set_xlabel("Iteration")
-        ax.set_ylabel("itemBase2_maxValue")
-        ax.set_yscale('linear')
-        ax.set_title('itemBase2_maxValue')
-        ax.grid(True)
+            ax.set_xlabel("Iteration")
+            ax.set_ylabel(item)
+            ax.set_yscale('linear')
+            ax.set_title(item)
+            ax.grid(True)
 
         plt.tight_layout()
 

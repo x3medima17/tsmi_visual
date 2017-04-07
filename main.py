@@ -64,6 +64,8 @@ class Application(tornado.web.Application):
 
             (r"/hook", HookHandler),
 
+
+
             (r"/filter", FilterHandler),
 
             (r"/delete", DeleteHandler),
@@ -167,7 +169,7 @@ class DownloadHandler(tornado.web.RequestHandler):
             meta = item["meta"]
 
             m = len(data["delta"])
-            for key in data.keys():
+            for key in sorted(data.keys()):
                 if not key in header:
                     header.append(key)
             out += "\t".join(header) + "\n"
